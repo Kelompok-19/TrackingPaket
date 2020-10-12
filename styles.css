@@ -4,7 +4,10 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> gabungan
 .alert {
     text-align: center;
     padding: 20px;
@@ -29,3 +32,10 @@
   .closebtn:hover {
     color: black;
   }
+<<<<<<< HEAD
+=======
+
+  #loading{
+    display: none;
+  }
+>>>>>>> gabungan
