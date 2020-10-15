@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    <!-- css -->
+    <link rel="stylesheet" href="res/styles.css">
   </head>
   <body>
     <nav class="navbar navbar-light fixed-top bg-light navbar-expand">
       <div class="collapse navbar-collapse">
         <a class="navbar-brand" href="#">
-          <img src="res/janexlogo.png" width="30" height="30" alt="">
+          <img src="res/img/janexlogo.png" width="30" height="30" alt="">
         </a>
         <ul class="navbar-nav">
           <li class="nav-item active">
@@ -32,8 +35,9 @@
     </nav>
     <div style="padding-top: 20px;"></div>
     <div class="container">
-        <h1 class="mt-5 text-secondary">Yuk, Lacak Paketmu Sekarang!!</h1>
+        <h1 class="mt-5" style="color:sandybrown"><strong>Yuk, Lacak Paketmu Sekarang!!</strong></h1>
         <hr>
+
         <div class="col-sm mx-3 px-5 py-3 border rounded">
 
             <nav>
@@ -55,10 +59,9 @@
                 <form class="pb-3">
                     <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Apa kegunaannya?</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Cek Resi</h6>
-                          <p class="card-text">Layanan yang kami berikan berupa situs yang dapat menampilkan status pengiriman sudah berhasil atau tidak beserta dengan lokasi terkini paket yang dilacak</p>
-                          <a href="#" class="card-link text-info">Cek Sekarang</a>
+                          <h5 class="card-title text-danger">Penasaran paketmu sekarang dimana?</h5>
+                          <p class="card-text">Layanan ini memungkinkan pengguna untuk melacak status pengiriman paket</p>
+                          <a href="#" class="card-link text-warning">Cek Sekarang</a>
                         </div>
                       </div>
                 </form>
@@ -68,10 +71,9 @@
                 <form class="pb-3">
                     <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Apa kegunaannya?</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Cek Ongkir</h6>
-                          <p class="card-text">Layanan yang kami berikan berupa situs penghitungan ongkos kirim yang harus ditanggung pembeli dalam pengiriman barang</p>
-                          <a href="#" class="card-link text-info">Cek Sekarang</a>
+                          <h5 class="card-title text-danger">Mau kirim barang tapi gatau ongkos kirimnya?</h5>
+                          <p class="card-text">Cukup memasukkan alamat tujuan dan asal, pengguna dapat langsung menghitung ongkir paket</p>
+                          <a href="#" class="card-link text-warning">Hitung Disini</a>
                         </div>
                       </div>
                 </form>
@@ -81,17 +83,67 @@
                 <form class="pb-3">
                     <div class="card">
                         <div class="card-body">
-                          <h5 class="card-title text-primary">Apa kegunaannya?</h5>
-                          <h6 class="card-subtitle mb-2 text-muted">Question and Answer</h6>
-                          <p class="card-text">Layanan yang kami berikan berupa situs yang dapat menjawab semua pertanyaan dari user</p>
-                          <a href="#" class="card-link text-info">Lihat Selengkapnya</a>
+                          <h5 class="card-title text-danger">Masih bingung dengan fitur pengiriman yang ada?</h5>
+                          <p class="card-text">Tanyakan langsung kepada kami dan lihat jawaban dari pertanyaan serupa</p>
+                          <a href="#" class="card-link text-warning">Baca Selengkapnya</a>
                         </div>
                       </div>
                 </form>
             </div>
+        </div>
+        </div>
+    </div>
 
+    <hr>
+
+    <div class="card-deck justify-content-center">
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="res/img/iklan1.png" class="card-img-top" alt="iklan1">
+        <div class="card-body">
+          <h5 class="card-title text-danger">PROMO!</h5>
+          <p class="card-text text-secondary">Mau kirim paket tanpa bayar ongkir?</p>
+          <a href="#" class="btn btn-danger text-white">Cek Disini</a>
+          <p class="card-text"><small class="text-muted">Syarat &amp; Ketentuan Berlaku</small></p>
         </div>
+      </div>
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="res/img/iklan2.png" class="card-img-top" alt="iklan2">
+        <div class="card-body">
+          <h5 class="card-title text-danger">BARU!</h5>
+          <p class="card-text text-secondary">Sekarang belanja bisa dimana aja kapan aja</p>
+          <a href="#" class="btn btn-danger text-white">Cek Toko Sebelah</a>
+          <p class="card-text"><small class="text-muted">Bekerja Sama Dengan Toko Sebelah</small></p>
         </div>
+      </div>
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="res/img/iklan4.png" class="card-img-top" alt="iklan4">
+        <div class="card-body">
+          <h5 class="card-title text-danger">KAPAN LAGI?</h5>
+          <p class="card-text text-secondary">Nonton film tanpa iklan sepuasnya?</p>
+          <a href="#" class="btn btn-danger text-white">Download Sekarang</a>
+          <p class="card-text"><small class="text-muted">Promo hanya berlaku hari ini</small></p>
+        </div>
+      </div>
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="res/img/iklan3.png" class="card-img-top" alt="iklan3">
+        <div class="card-body">
+          <h5 class="card-title text-danger">PENAWARAN</h5>
+          <p class="card-text text-secondary">Mau promosikan usahamu di web kami?</p>
+          <a href="#" class="btn btn-warning text-white">Hubungi Kami</a>
+          <p class="card-text"><small class="text-muted">Slot Terbatas</small></p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="card border-rounded">
+      <div class="card-body">
+        <blockquote class="blockquote text-right">
+            <p class="mb-0 text-danger"><strong><em>Terima Kasih Telah Mengunjungi Website Kami</em></strong></p>
+            <footer class="blockquote-footer">JAN Express</cite></footer>
+        </blockquote>
+      </div>
     </div>
       
     </div>
