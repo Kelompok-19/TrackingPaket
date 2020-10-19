@@ -15,7 +15,7 @@ function showTable(){
         for(var i=0; i<popup.length; i++){
             popup[i].style.display = "none"
         }
-        data = setTimeout(showData, 3000);
+        data = setTimeout(showData, 1000);
     }
     
 }
