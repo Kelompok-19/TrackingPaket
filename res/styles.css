@@ -1,6 +1,14 @@
+body{
+  background-image: url(img/janexbg.png);
+}
+
+.table{
+  background-color:white;
+}
+
 .cek-resi{
   font-size: 1.5cm;
-  color: #9F4145;
+  color: #030303;
   text-align: center;
 }
 
