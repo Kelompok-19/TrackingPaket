@@ -20,7 +20,7 @@
        <script src="scripts.js"></script>
 
        <!-- css -->
-       <link rel="stylesheet" href="styles.css">
+       <link rel="stylesheet" href="res/StatusPengirimanStyles.css">
 
        <!--another link-->
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" />">
@@ -29,27 +29,66 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-light fixed-top bg-light navbar-expand shadow">
-    <div class="collapse navbar-collapse">
-      <a class="navbar-brand" href="#">
-        <img src="img/janexlogo.png" width="30" height="30" alt="">
-      </a>
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Cek Resi</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Cek Ongkir</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Q&amp;A</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+  <nav class="navbar navbar-light fixed-top navbar-expand">
+        <div class="collapse navbar-collapse">
+          <a class="navbar-brand" href="#">
+            <img src="res/img/janexlogo.png" width="48" height="48" alt="" class="janexlogo">
+          </a>
+        
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html">
+                <i data-feather="home" class="homemove">
+                </i>
+                <p class="hov">&ensp;Home</p>
+              </a>
+            </li>
+            <li class="nav-item2 active">
+              <a class="nav-link" href="#">
+                <i data-feather="package" class="current"></i>
+                <p class="current2">
+                  &nbsp;Cek Resi
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="cek-ongkir.html">
+                <i data-feather="pocket" class="ongkirmove"></i>
+                <p class="hov">
+                  &nbsp;Cek Ongkir
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contactus.html">
+                <i data-feather="phone" class="contactusmove"></i>
+                <p class="hov">
+                &nbsp;Contact Us
+                </p>
+              </a>    
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="faq.html">
+                <i data-feather="help-circle" class="faqmove"></i>
+                <p class="hov">
+                &nbsp;FAQ
+                </p>
+              </a>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav ml-auto">
+            <li> 
+              <p class="mt-2" style="color:slateblue;">
+                <span id="datetime"></span>
+              </p>
+              <script>
+                var dt = new Date();
+                document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"/"+ (("0"+(dt.getMonth()+1)).slice(-2)) +"/"+ (dt.getFullYear()) +" @"+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+              </script>
+            </li>
+          </ul>
+       </div>
+      </nav>
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
