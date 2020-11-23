@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>JAN Express - FAQ</title>
+    
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/59c5174634.js" crossorigin="anonymous"></script>
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <!-- js for client side-->
+    <script src="../js/scripts.js"></script>
+
+    <!--another link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script src="semantic/dist/semantic.min.js"></script>   
+
+    <!-- css -->
+    <link rel="stylesheet" href="../css/faqstyles.css">    
+  </head>
+  <body>
+    <nav class="navbar navbar-light fixed-top navbar-expand">
+      <div class="collapse navbar-collapse">
+        <a class="navbar-brand" href="#">
+          <img src="../img/janexlogo.png" width="48" height="48" alt="" class="janexlogo">
+        </a>
+      
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/index/">
+              <i data-feather="home" class="homemove">
+              </i>
+              <p class="hov">&ensp;Home</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/status/">
+              <i data-feather="package" class="move"></i>
+              <p class="hov">
+                &nbsp;Cek Resi
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/ongkir/">
+              <i data-feather="pocket" class="ongkirmove"></i>
+              <p class="hov">
+                &nbsp;Cek Ongkir
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/">
+              <i data-feather="phone" class="move"></i>
+              <p class="hov">
+              &nbsp;Contact Us
+              </p>
+            </a>    
+          </li>
+          <li class="nav-item2 active">
+            <a class="nav-link" href="#">
+              <i data-feather="help-circle" class="current"></i>
+              <p class="current2">
+              &nbsp;FAQ
+              </p>
+            </a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav ml-auto">
+          <li> 
+            <p class="mt-2" style="color:slateblue;">
+              <span id="datetime"></span>
+            </p>
+            <script>
+              var dt = new Date();
+              document.getElementById("datetime").innerHTML = (("0"+dt.getDate()).slice(-2)) +"/"+ (("0"+(dt.getMonth()+1)).slice(-2)) +"/"+ (dt.getFullYear()) +" @"+ (("0"+dt.getHours()).slice(-2)) +":"+ (("0"+dt.getMinutes()).slice(-2));
+            </script>
+          </li>
+        </ul>
+     </div>
+    </nav>
+
+    <div style="padding-top: 18px;">
+    <div class="container">
+        <h1 class="mt-5" style="color:sandybrown"><strong>FAQ</strong></h1>
+        <h6 class="mt-2" style="color:#2C3E50; font-size:18px">Frequently Asked Questions</h6>
+        <hr>
+
+        <div class="col-sm mx-3 px-5 py-3">
+
+          <nav>
+              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                <a class="nav-link active text-danger" id="nav-resi-tab" data-toggle="tab" href="#nav-resi" role="tab" aria-controls="nav-resi" aria-selected="true">
+                  Pengiriman
+                  <i data-feather="package"></i>  
+                </a>
+                <a class="nav-link text-danger" id="nav-ongkir-tab" data-toggle="tab" href="#nav-ongkir" role="tab" aria-controls="nav-ongkir" aria-selected="false">
+                  Asuransi dan Biaya
+                  <i data-feather="pocket"></i>  
+                </a>
+                <a class="nav-link text-danger" id="nav-qna-tab" data-toggle="tab" href="#nav-qna" role="tab" aria-controls="nav-qna" aria-selected="false">
+                  Lainnya
+                  <i data-feather="help-circle"></i>  
+                </a>
+              </div>
+            </nav> 
+
+      <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-resi" role="tabpanel" aria-labelledby="nav-resi-tab">
+              <form class="pb-3">
+                  <div class="card" style="height:860px;">
+                      <div class="card-body">
+                        <h5 class="card-title">Bagaimana cara melacak paket?</h5>
+                          <br>
+                        <p class="card-text">Gunakan fitur cek resi di bagian atas website.</p>
+                          <br>
+                        <h5 class="card-title">Berapa lama estimasi paket sampai?</h5>
+                          <br>
+                        <p class="card-text">REGULER: 4-5 hari (tidak termasuk hari Minggu dan libur nasional)</p>
+                        <p class="card-text">CEPAT: 2-3 hari (tidak termasuk hari Minggu dan libur nasional)</p>
+                        <p class="card-text">EXPRESS: 1 hari</p>
+                          <br>
+                        <h5 class="card-title">Barang apa saja yang dilarang untuk dikirim?</h5>
+                          <br>
+                        <p class="card-text">1. Senjata api, bom, dan amunisinya.</p>
+                        <p class="card-text">2. Bahan peladak atau berhubungan seperti mesiu, petasan, detonator dan sejenisnya.</p>
+                        <p class="card-text">3. Bahan yang gampang terbakar seperti gas, alkohol, fosfor, sulfur, bensin, dan sejenisnya.</p>
+                        <p class="card-text">4. Obat – obatan terlarang. Narkoba.</p>
+                        <p class="card-text">5. Bahan kimia yang bersifat korosif seperti asam sulfat, asam klorida, hidrogen peroksida dan seterusnya.</p>
+                        <p class="card-text">6. Benda yang memiliki kandungan radioaktif seperti uranium, plutonium, kobalt, radium dan sebagainya.</p>
+                        <p class="card-text">7. Benda propaganda. Misal atribut atau dokumen yang bisa mengancam kestabilan dan keamanan nasional.</p>
+                        <p class="card-text">8. Organ hewan yang belum diproses dengan aman dan bisa membahayakan kesehatan.</p>
+                        <p class="card-text">9. Kemasan paket yang tidak aman bagi barangnya juga lingkungan sekitar.</p>
+                        <p class="card-text">10. Melanggar hukum. Seperti uang tunai, uang palsu, senjata tajam, replika senjata, barang seni, hewan dan tumbuhan langka, dokumen rahasia negara, dst.</p>
+                          <br>
+                        <h5 class="card-title">Bagaimana cara mendapatkan nomor resi pengiriman?</h5>
+                          <br>
+                        <p class="card-text">Nomor resi pengiriman akan diberikan oleh admin drop point setelah menyelesaikan pembayaran.</p>
+                          <br>
+                        <h5 class="card-title">Bagaimana cara mengirim barang melalui JAN Express?</h5>
+                          <br>
+                        <p class="card-text">JAN Express tersedia dan tersebar di seluruh Indonesia. Silahkan kunjungi drop point terdekat.</p>
+                          <br>
+                        <h5 class="card-title">Apakah JAN Express menerima penjemputan barang? Adakah biaya penjemputan atau pembayaran minimum?</h5>
+                          <br>
+                        <p class="card-text">JAN Express menerima penjemputan barang tanpa biaya. Untuk pembayaran minimum silahkan hubungi drop point yang bersangkutan</p>
+                          <br>
+                        <h5 class="card-title">Apakah JAN Express bersedia mengirimkan barang ke alamat yang benar jika alamat yang diberikan salah?</h5>
+                          <br>
+                        <p class="card-text">Kurir JAN Express akan mengirimkan barang ke alamat yang benar jika berada dalam radius 4km.</p>  
+                          <br>
+                        <h5 class="card-title">Bagaimana cara mengubah alamat pengiriman</h5>
+                          <br>
+                        <p class="card-text">Dengan mengirim pesan "UBAH_ALAMAT (nomor resi pengiriman)" ke 0812345678 (WhatsApp).</p>
+                          <br>
+                        <h5 class="card-title">Bagaimana jika pelanggan mengirim barang yang ada di daftar barang yang dilarang kirim?</h5>
+                          <br>
+                        <p class="card-text">Akan kami proses dengan pihak berwenang.</p>
+                          <br>
+                        <h5 class="card-title">Apakah JAN Express menerima pengiriman barang berbentuk cairan?</h5>
+                          <br>
+                        <p class="card-text">Pengiriman barang berbentuk cairan hanya berlaku untuk pengiriman antar pulau yang sama.</p>
+                          <br>
+                      </div>
+                    </div>
+              </form>
+          </div>
+
+          <div class="tab-pane fade" id="nav-ongkir" role="tabpanel" aria-labelledby="nav-ongkir-tab">
+              <form class="pb-3">
+                  <div class="card" style="height:890px;">
+                      <div class="card-body">
+                        <h5 class="card-title">Apakah JAN Express menanggung barang yang hilang, rusak, atau terlambat datang?</h5>
+                          <br>
+                        <p class="card-text">JAN Express akan menanggung 100% nilai barang (dengan nilai maksimum Rp. 20,000,000.-).</p>
+                          <br>
+                        <h5 class="card-title">Tipe barang seperti apa saja yang wajib diasuransikan?</h5>
+                          <br>
+                        <p class="card-text">Barang apapun yang bernilai minimum Rp. 200,000.-</p>
+                          <br>
+                        <h5 class="card-title">Bagaimana cara mengirim barang dengan asuransi?</h5>
+                          <br>
+                        <p class="card-text">Beri tahu admin drop point jika Anda ingin barang Anda diasuransikan. Asuransi seharga 0.2% harga barang (dengan nota).</p>
+                          <br>
+                        <h5 class="card-title">Bagaimana cara klaim biaya penanggungan barang yang hilang atau rusak?</h5>
+                          <br>
+                        <p class="card-text">Untuk klaim, silahkan hubungi customer care JAN Express (021) 123 456. Setelah itu berikan formulir klaim ke drop point terdekat dan ikuti langkah-</p>
+                        <p class="card-text">langkahnya.</p>
+                          <br>
+                        <h5 class="card-title">Metode pembayaran apa saja yang tersedia di JAN Express?</h5>
+                          <br>
+                        <p class="card-text">Selama masa pandemi, kami hanya menerima pembayaran non tunai. Untuk metode pembayaran yang tersedia dapat ditanyakan ke drop point.</p>
+                          <br>
+                        <h5 class="card-title">Bagaimana cara menghitung biaya pengiriman paket dengan dimensi besar?</h5>
+                          <br>
+                        <p class="card-text">((Panjang x Lebar x Tinggi) X 1Kg/6000) x tarif/kg</p>
+                          <br>
+                        <h5 class="card-title">Apa saja syarat klaim asuransi barang hilang atau rusak?</h5>
+                          <br>
+                        <p class="card-text">1. Nota barang tersedia</p>
+                        <p class="card-text">2. Klaim diajukan maksimal 2 minggu setelah barang dinyatakan hilang atau rusak.</p>
+                        <p class="card-text">3. Nilai barang tidak lebih dari Rp. 20,000,000. Jika lebih, maka hanya akan dibayarkan sejumlah Rp. 20,000,000.</p>
+                        <p class="card-text">3. Pengirim/penerima barang harus datang ke drop point terdekat untuk memberi nomor formulir klaim dan membawa nota barang.</p>
+                          <br>
+                        <h5 class="card-title">Penasaran paketmu sekarang dimana?</h5>
+                          <br>
+                        <p class="card-text">Layanan ini memungkinkan pengguna untuk melacak status pengiriman paket</p>
+                          <br>
+                        <h5 class="card-title">Penasaran paketmu sekarang dimana?</h5>
+                          <br>
+                        <p class="card-text">Layanan ini memungkinkan pengguna untuk melacak status pengiriman paket</p>
+                          <br>
+                        <h5 class="card-title">Adakah potongan harga untuk pengiriman barang dengan skala besar?</h5>
+                          <br>
+                        <p class="card-text">Ada. Untuk barang dengan berat >10Kg, dapat dikirim dengan JAN Trucking dengan estimasi pengiriman 4-12 hari (tergantung wilayah).</p>
+                          <br>
+                        <h5 class="card-title">Berapa biaya pengiriman dengan menggunakan JNE Trucking?</h5>
+                          <br>
+                        <p class="card-text">Berat asli atau dimensi barang x (30% x tarif reguler/kg)</p>
+                        <p class="card-text">Cara hitung berat dengan dimensi: (Panjang x Lembar x Tinggi) X 1Kg/4000</p>
+                          <br>
+                        <h5 class="card-title">Berapa lama proses pencairan klaim asuransi barang hilang atau rusak?</h5>
+                          <br>
+                        <p class="card-text">2-4 minggu (tidak termasuk hari Minggu dan hari libur nasional).</p>
+                      </div>
+                    </div>
+              </form>
+          </div>
+
+          <div class="tab-pane fade" id="nav-qna" role="tabpanel" aria-labelledby="nav-qna-tab">
+              <form class="pb-3">
+                  <div class="card" style="height:100px;">
+                      <div class="card-body">
+                        <p class="card-title" style="font-size: 20px; color:#C0392B">Masih memiliki pertanyaan?</p>
+                        <br>
+                        <a href="/contact/" class="card-link text-warning">
+                          <i data-feather="phone"></i>
+                          Hubungi Kami
+                        </a>
+                      </div>
+                    </div>
+              </form>
+          </div>
+      </div>
+      </div>
+      
+    <div class="card2 border-rounded">
+      <div class="card-body">
+        <blockquote class="blockquote text-right">
+            <p class="mb-0 text-danger"><strong><em>Terima Kasih Telah Mengunjungi Website Kami</em></strong></p>
+            <footer class="blockquote-footer">JAN Express</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
+
+</div>
+  </body>
+</html>

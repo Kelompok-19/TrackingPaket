@@ -1,0 +1,27 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Sebuah website sederhana untuk bisnis logistik JAN Express.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev" : "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kelompok-19/TrackingPaket.git"
+  },
+  "author": "Kelompok 9",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kelompok-19/TrackingPaket/issues"
+  },
+  "homepage": "https://github.com/Kelompok-19/TrackingPaket#readme",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  }
+}
