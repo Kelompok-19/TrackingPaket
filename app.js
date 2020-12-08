@@ -1,3 +1,5 @@
+const { SIGINT } = require('constants');
+const { check } = require('yargs');
 const yargs = require('yargs');
 const db = require('./app/db');
 
@@ -37,6 +39,8 @@ if(argv._.includes('init')){
             "username": "INSERT_USERNAME",
             "password": "INSERT_PASSWORD",
         },
+        "secret": "SESSION_SECRET_KEY_HERE",
+        "static_files_dir": "./static/",
     };
 
     let fs = require('fs');
@@ -51,24 +55,48 @@ if(argv._.includes('init')){
 }
 
 if(argv._.includes('initdb')){
+    const prompt = require('prompt-sync')({ sigint: true });
+
+    check_continue = false;
+    while (!check_continue) {
+        console.log("This command will destroy the database which name is in your config file and everything saved to it.\nCan be safely used for first time setup.");
+        input = prompt('Are you sure? (yes/no) : ');
+        check_continue = input == "yes";
+        if (input == "no") {
+            return;
+        }
+    }
+
     let fs = require('fs');
 
     let setting = fs.readFileSync('settings.json');
-    setting = JSON.parse(setting)
+    setting = JSON.parse(setting);
 
-    db.first_init(setting.dbOptions)
+    db.first_init(setting.dbOptions);
 }
 
 if(argv._.includes('run')){
     const express = require('express');
     const session = require('express-session');
+    const passport = require('passport');
 
     const fs = require('fs');
     let setting = fs.readFileSync('settings.json');
+    setting = JSON.parse(setting);
 
-    setting = JSON.parse(setting)
+    db.init(setting.dbOptions);
 
-    db.init(setting.dbOptions)
+    app = express();
+    app.set('view engine', 'ejs');
+    app.use(express.static(setting.static_files_dir));
+    app.use(session({
+        secret: setting.secret,
+        resave: false,
+        saveUninitialized: false
+    }));
+
+    app.use(passport.initialize());
+    app.use(passport.session());
 
     require('./app/test/tes').test();
 }

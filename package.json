@@ -18,10 +18,14 @@
   },
   "homepage": "https://github.com/Kelompok-19/TrackingPaket#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
     "pg": "^8.5.1",
+    "prompt-sync": "^4.2.0",
     "sequelize": "^6.3.5",
     "yargs": "^16.2.0"
   },
