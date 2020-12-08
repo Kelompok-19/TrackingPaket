@@ -5,7 +5,7 @@ body {
 
 .navbar {
   height:58px;
-  background-color: rgba(105, 105, 105, 0.1);
+  background-color: rgb(255, 255, 255);
 }
 
 .card-title {
@@ -76,14 +76,14 @@ body {
 }
 
 .nav-item :hover > * {
-  color:white;
+  color:black;
 }
 
 .hov {
   color:#C0392B;
 }
 .hov :hover >* {
-  color:white;
+  color:black;
 }
 
 

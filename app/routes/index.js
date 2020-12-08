@@ -1,5 +1,5 @@
-module.exports = (req, res) => {
-    res.render('index')
+module.exports.get = (req, res) => {
+    res.render('index');
 }
 
-module.exports.path = "/"
+module.exports.path = "/";

@@ -86,6 +86,8 @@ if(argv._.includes('run')){
     const express = require('express');
     const session = require('express-session');
     const passport = require('passport');
+    const bodyparser = require('body-parser');
+
     require('./app/config/passport')(passport);
 
     app = express();
@@ -99,6 +101,8 @@ if(argv._.includes('run')){
 
     app.use(passport.initialize());
     app.use(passport.session());
+
+    app.use(bodyparser.urlencoded());
 
     app.use(require('./app/routes'));
 
