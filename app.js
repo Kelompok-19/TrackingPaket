@@ -41,6 +41,7 @@ if(argv._.includes('init')){
         },
         "secret": "SESSION_SECRET_KEY_HERE",
         "static_files_dir": "./static/",
+        "port": "8085",
     };
 
     let fs = require('fs');
@@ -76,15 +77,16 @@ if(argv._.includes('initdb')){
 }
 
 if(argv._.includes('run')){
-    const express = require('express');
-    const session = require('express-session');
-    const passport = require('passport');
-
     const fs = require('fs');
     let setting = fs.readFileSync('settings.json');
     setting = JSON.parse(setting);
 
     db.init(setting.dbOptions);
+
+    const express = require('express');
+    const session = require('express-session');
+    const passport = require('passport');
+    require('./app/config/passport')(passport);
 
     app = express();
     app.set('view engine', 'ejs');
@@ -98,5 +100,8 @@ if(argv._.includes('run')){
     app.use(passport.initialize());
     app.use(passport.session());
 
-    require('./app/test/tes').test();
+    app.use(require('./app/routes'));
+
+    app.listen(setting.port);
+    console.log(`server is running on ${setting.port}.`);
 }
