@@ -7,6 +7,7 @@ User.init({
     username: { type: DataTypes.STRING, allowNull: false },
     password: { type: DataTypes.STRING, allowNull: false },
     email: { type: DataTypes.STRING, allowNull: false },
+    is_admin:  { type: DataTypes.BOOLEAN, defaultValue: false },
     userid: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true},
 }, { sequelize, modelName: 'user'})
 module.exports = User;

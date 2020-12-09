@@ -51,6 +51,7 @@ if(argv._.includes('init')){
         }
 
         console.log('Files created');
+        console.log('Edit settings.json. This webapp uses PostgreSQL.')
     });
 
 }
