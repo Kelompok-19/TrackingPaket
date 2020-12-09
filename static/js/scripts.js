@@ -1,6 +1,6 @@
 function showTable(){
     var resi = document.getElementById("no-resi").value;
-    //console.log(resi);
+    console.log(resi);
     var popup = document.getElementsByClassName("alert");
     
     if(resi == ""){   
