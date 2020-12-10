@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/59c5174634.js" crossorigin="anonymous"></script>
+    <!-- CSS only -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <style>
+        .login-form {
+            text-align: center;
+            align-content: center;
+            background: #26262A;
+            width: 30%;
+            height: 45%;
+            padding: 0.5cm;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+
+        ::placeholder {
+            color: rgb(172, 130, 130);
+        }
+
+        input {
+            background-color:#26262A;
+            border: none;
+            outline: none;
+            border-bottom: solid 0.9px  #9F4145;
+            height: 1cm;
+            color: white;
+            width: 7cm;
+        }
+        input:focus {
+            background-color:#26262A;
+            border: none;
+            outline: none;
+            border-bottom: solid 3px #B8877D !important;
+            height: 1cm !important;
+            color: white !important;
+            width: 7cm;
+        }
+
+        i{
+            color:rgb(230, 210, 213);
+        }
+
+        button {
+            width: 2.5cm;
+            padding: 0.2cm;
+            background-color:  rgb(114, 45, 48);
+            border: none;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+        }
+
+        button.sign-up {
+            border: none;
+            background-color: rgb(159, 65, 69);
+            color: rgb(230, 210, 213);
+            font-size: 12px;
+        }
+        p{
+            color: rgb(196, 152, 158);
+        }
+    </style>
+
+</head>
+
+<body style="background: rgb(91, 90, 92);">
+    <div class="login-form">
+        <h2 style="color:  rgb(230, 210, 213);">Sign in</h2>
+        <hr style="background-color: rgb(73, 73, 73);">
+        <div class="username">
+            <i class="fas fa-user" style="padding-right: 0.3cm;"></i>
+            <input type="text" name="username" id="login-username" placeholder="Username">
+        </div>
+        <div class="password" style="padding-top: 0.4cm; padding-bottom: 0.4cm;">
+            <i class="fas fa-lock" style="padding-right: 0.3cm;"></i>
+            <input type="password" name="pass" id="login-password" placeholder="Password">
+        </div>
+        <button style="margin-right: 0.5cm;"><b>Back</b></button>
+        <button><b>Login</b></button>
+        <p style="font-size: small; padding-top: 0.3cm;">Don't have an account?<span>
+            <a class="sign-up" style="width: fit-content; color: rgb(196, 152, 158)"><b> Sign Up here</b></a></span></p>
+    </div>
+</body>
+
+</html>
