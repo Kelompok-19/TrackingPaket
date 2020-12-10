@@ -1,0 +1,22 @@
+<%- include('layout/header', {title : "Cek Ongkir"}) %>
+    <form id="pickup" name="pickup" method="post" action="/pickup">
+        <label for="pengirim">Nama Pengirim : </label>
+        <input class="text" name="pengirim" type="text" value="<%= locals.user['nama_depan'] %>" required /><br>
+        <label for="no_telp_pengirim">Nomor Pengirim : </label>
+        <input class="text" name="no_telp_pengirim" type="text" value="<%= locals.user['no_telp'] %>" required /><br>
+        <label for="alamat_pickup">Alamat Pickup : </label>
+        <input class="text" name="alamat_pengirim" type="text" value="<%= locals.user['alamat'] %>" required /><br>
+        <label for="penerima">Nama Pengirim : </label>
+        <input class="text" name="penerima" type="text" required /><br>
+        <label for="no_telp_penerima">Nomor Penerima : </label>
+        <input class="text" name="no_telp_penerima" type="text" required /><br>
+        <label for="alamat_tujuan">Alamat Tujuan : </label>
+        <input class="text" name="alamat_penerima" type="text" required /><br>
+        <label for="berat">Berat : </label>
+        <input class="text" name="berat" type="number" min="1" value="1" required /><br>
+        <input class="button" type="submit" value="Submit" />
+        <% if (locals.message) { %>
+            <h2><%= message %></h2>
+        <% } %>
+    </form>
+<%- include('layout/footer') %>

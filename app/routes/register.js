@@ -5,7 +5,13 @@ module.exports.get = (req, res) => {
 }
 
 module.exports.post = (req, res, next) => {
-    passport.authenticate('local-register', { successRedirect: '/', failureRedirect: '/login' })(req, res, next);
+    passport.authenticate('local-register', (err, user, info) => {
+        if (err) { return next(err); }
+        if (!user) { res.render('register', info); }
+        else {
+            res.redirect('/');
+        }
+    })(req, res, next);
 }
 
 module.exports.path = "/register";

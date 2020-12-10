@@ -21,7 +21,12 @@ const db = require('./app/db');
 */
 const argv = yargs
     .command('initproject', 'Create starter file needed to run the project')
-    .command('initdb', 'Create a database for the webapp')
+    .command('initdb', 'Create a database for the webapp', {
+        'verbose': {
+            alias: 'v',
+            description: 'Enable verbose error printing'
+        }
+    })
     .command('run', 'Run webapp')
     .help()
     .alias('help', 'h')
@@ -69,12 +74,20 @@ if(argv._.includes('initdb')){
         }
     }
 
+    let admin_config = {
+        username: prompt('Admin username: '),
+        password: prompt('Admin password: ', { echo: '*' }),
+        email: prompt('Admin email: '),
+        front_name: prompt('Admin front name: '),
+        last_name: prompt('Admin last name: '),
+    };
+
     let fs = require('fs');
 
     let setting = fs.readFileSync('settings.json');
     setting = JSON.parse(setting);
 
-    db.first_init(setting.dbOptions);
+    db.first_init(setting.dbOptions, admin_config, (argv.v));
 }
 
 if(argv._.includes('run')){
@@ -103,7 +116,13 @@ if(argv._.includes('run')){
     app.use(passport.initialize());
     app.use(passport.session());
 
-    app.use(bodyparser.urlencoded());
+    app.use(bodyparser.urlencoded({ extended: true }));
+
+    // Add global variable that views can see here
+    app.use((req, res, next) => {
+        res.locals.user = req.user;
+        next();
+    })
 
     app.use(require('./app/routes'));
 

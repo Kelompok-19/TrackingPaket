@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <table>
+            <% if (locals.listPaket) { %>
+                <ul>
+                    <% for (paket in listPaket) { %>
+                        <li>
+                            <%= listPaket[paket] %>
+                        </li>
+                    <% } %>
+                </ul>
+            <% } %>
+        </table>
+    </body>
+</html>

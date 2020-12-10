@@ -1,21 +1,16 @@
-const { Sequelize, Model, DataTypes, Deferrable } = require('sequelize');
+const { Model, DataTypes, Deferrable } = require('sequelize');
 const sequelize = require('../db').db();
 
 const User = require('./user');
 const StatusCode = require('./statuscode');
+const Request = require('./request');
 
 class Paket extends Model {}
 
-//STATUS CODE:
-//0 : ON PROCESS
-//1 : TRANSIT
-//2 : RECEIVED
 Paket.init({
-    paketid: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true },
+    paket_id: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true, references: { model: Request, key: 'request_id', deferrable: Deferrable.INITIALLY_IMMEDIATE }  },
     status: { type: DataTypes.INTEGER, allowNull: false, references: { model: StatusCode, key: 'status_id', deferrable: Deferrable.INITIALLY_IMMEDIATE } },
-    berat: { type: DataTypes.INTEGER, allowNull: false },
-    tujuanpaket: { type: DataTypes.STRING, allowNull: false },
-    pengirimpaket: { type: DataTypes.STRING, allowNull: false },
-    pengirimterdaftar: { type: DataTypes.INTEGER, references: { model: User, key: 'userid', deferrable: Deferrable.INITIALLY_IMMEDIATE } },
-}, { sequelize, modelName: 'paket'});
+    assigned_staff: { type: DataTypes.INTEGER, allowNull: false, references: { model: User, key: 'user_id', deferrable: Deferrable.INITIALLY_IMMEDIATE } },
+}, { sequelize, modelName: 'paket', freezeTableName: true});
+
 module.exports = Paket;

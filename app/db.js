@@ -3,7 +3,7 @@ const pg = require('pg');
 
 var sequelize = null;
 
-module.exports.first_init = function(dbSettings){
+module.exports.first_init = function(dbSettings, admin_config, verbose = false){
     let dbName = dbSettings.dbName,
         username = dbSettings.username,
         password = dbSettings.password,
@@ -25,27 +25,29 @@ module.exports.first_init = function(dbSettings){
             console.log('Successfully created database');
         }
         else {
-            console.log("Failed creating database \n", err);
+            if (!verbose) {
+                console.log("Failed creating database.\nA database probably already exists with the same name.\nCreating a new database.\nUse with argument -v if error persists");
+            }
+            else {
+                console.log("Faild creating database.", err)
+            }
         }
+
         sequelize = new Sequelize(createConnectionString, { logging: false });
 
-        require('./models/user');
-        require('./models/paket');
+        const usertype = require('./models/usertype');
+        const user = require('./models/user');
         const statuscode = require('./models/statuscode');
 
+        require('./models/paket');
+        require('./models/request')
+
         sequelize.sync({ force: true }).then((sequelize) => {
-            statuscode.create({
-                status_id: 0,
-                status_msg: "PROCESSING"
-            });
-            statuscode.create({
-                status_id: 1,
-                status_msg: "ON TRANSIT"
-            });
-            statuscode.create({
-                status_id: 2,
-                status_msg: "RECEIVED"
-            });
+            usertype.initialize();
+            user.createAdmin(admin_config.username, admin_config.password, admin_config.email, admin_config.front_name, admin_config.last_name);
+            statuscode.initialize();
+
+            console.log('Success initializing database!')
         });
         
         pool.end();
@@ -64,8 +66,10 @@ module.exports.init = function(dbSettings){
     sequelize = new Sequelize(createConnectionString, { logging: false });
 
     require('./models/statuscode');
+    require('./models/usertype');
     require('./models/user');
     require('./models/paket');
+    require('./models/request');
 }
 
 module.exports.db = function(){
