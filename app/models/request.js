@@ -1,4 +1,5 @@
 const { Model, DataTypes, Deferrable } = require('sequelize');
+const User = require('./user');
 const sequelize = require('../db').db();
 
 class Request extends Model {}
@@ -11,6 +12,7 @@ Request.init({
     no_telp_penerima: { type: DataTypes.STRING, allowNull: false },
     alamat_penerima: { type: DataTypes.STRING, allowNull: false },
     berat: { type: DataTypes.INTEGER, allowNull: false },
+    requester_id: { type: DataTypes.INTEGER, allowNull: false, references: { model: User, key: 'user_id', deferrable: Deferrable.INITIALLY_IMMEDIATE } },
     request_id: { type: DataTypes.INTEGER, allowNull: false, primaryKey: true, autoIncrement: true},
 }, { sequelize, modelName: 'request', freezeTableName: true})
 

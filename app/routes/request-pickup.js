@@ -24,6 +24,7 @@ module.exports.post = (req, res, next) => {
             nama_penerima: nama_penerima,
             no_telp_penerima: no_telp_penerima,
             alamat_penerima: alamat_penerima,
+            requester_id: req.user.user_id,
             berat: berat,
         });
 
