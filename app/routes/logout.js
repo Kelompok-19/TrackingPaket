@@ -5,4 +5,6 @@ module.exports.get = (req, res) => {
     res.redirect('/');
 }
 
-module.exports.path = "/logout";
+module.exports.register = function (router) {
+    router.get('/logout', this.get);
+}

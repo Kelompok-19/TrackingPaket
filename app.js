@@ -121,10 +121,17 @@ if(argv._.includes('run')){
     // Add global variable that views can see here
     app.use((req, res, next) => {
         res.locals.user = req.user;
+        res.locals.current_path = req.path;
+        res.locals.current_path_relative = '.' + req.path;
         next();
     })
 
     app.use(require('./app/routes'));
+
+    // If router can't find anything
+    app.use((req, res, next) => {
+        res.redirect('/404');
+    })
 
     app.listen(setting.port);
     console.log(`server is running on ${setting.port}.`);

@@ -1,5 +1,4 @@
 const { Model, DataTypes, Deferrable } = require('sequelize');
-const Paket = require('./paket');
 const sequelize = require('../db').db();
 
 class Request extends Model {}

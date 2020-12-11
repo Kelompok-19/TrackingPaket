@@ -14,4 +14,7 @@ module.exports.post = (req, res, next) => {
     })(req, res, next);
 }
 
-module.exports.path = "/register";
+module.exports.register = function (router) {
+    router.get('/register', this.get);
+    router.post('/register', this.post);
+}

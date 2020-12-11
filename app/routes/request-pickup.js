@@ -1,4 +1,5 @@
 const Request = require('../models/request');
+const { isAuthenticated } = require('../auth');
 
 module.exports.get = (req, res) => {
     res.render('request-pickup');
@@ -30,4 +31,7 @@ module.exports.post = (req, res, next) => {
     }    
 }
 
-module.exports.path = "/pickup";
+module.exports.register = function (router) {
+    router.get('/pickup', isAuthenticated, this.get);
+    router.post('/pickup', isAuthenticated, this.post);
+}

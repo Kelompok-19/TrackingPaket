@@ -51,6 +51,11 @@
                 <a class="nav-link" href="/dashboard">dashboard</a>
               </li>
             <% } %>
+            <% if (locals.user['user_type'] == 0) { %>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin">admin</a>
+              </li>
+            <% } %>
             <li class="nav-item">
               <a class="nav-link" href="/logout">logout</a>
             </li>

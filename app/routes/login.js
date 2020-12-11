@@ -28,4 +28,7 @@ module.exports.post = (req, res, next) => {
     })(req, res, next);
 }
 
-module.exports.path = "/login";
+module.exports.register = function (router) {
+    router.get('/login', this.get);
+    router.post('/login', this.post);
+}

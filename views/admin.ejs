@@ -1,0 +1,66 @@
+<%- include('layout/header', {title : "Cek Ongkir"}) %>
+<% if (locals.message) { %>
+    <h3><%= locals.message %></h3>
+<% } %>
+<% if (locals.users && locals.users.length > 0) { %>
+    <table style="border: 1px solid black; border-spacing: 15px;">
+        <tr>
+            <th>
+                Username
+            </th>
+            <th>
+                Nama Depan
+            </th>
+            <th>
+                Nama Belakang
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                No Telp
+            </th>
+            <th>
+                Alamat
+            </th>
+            <th>
+                User Type
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        <% for (i in users) { %>
+        <tr>
+            <td>
+                <%= users[i].username %>
+            </td>
+            <td>
+                <%= users[i].nama_depan %>
+            </td>
+            <td>
+                <%= users[i].nama_belakang %>
+            </td>
+            <td>
+                <%= users[i].email %>
+            </td>
+            <td>
+                <%= users[i].no_telp %>
+            </td>
+            <td>
+                <%= users[i].alamat %>
+            </td>
+            <td>
+                <%= usertypes.get(users[i].user_type) %>
+            </td>
+            <td>
+                <a href="<%= locals.current_path_relative %>/<%= users[i].user_id %>">Edit</a>
+                 | 
+                <a href="<%= locals.current_path_relative %>/hapus/<%= users[i].user_id %>">Hapus</a>
+            </td>
+        </tr>        
+        <% } %>
+        </ul>
+    </table>
+<% } %>
+<%- include('layout/footer') %>
