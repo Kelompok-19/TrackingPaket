@@ -128,7 +128,7 @@ if(argv._.includes('run')){
         setting.dbOptions.dbName = process.env.DATABASE_NAME;
         setting.dbOptions.host = db_connection_string.hostname;
         setting.dbOptions.port = db_connection_string.port;
-        credential = db_connection_string.auth.split('/');
+        credential = db_connection_string.auth.split(':');
         setting.dbOptions.username = credential[0];
         setting.dbOptions.password = credential[1];
         setting.dbOptions.defaultDb = db_connection_string.path.replace('/','');
