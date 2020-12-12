@@ -1,22 +1,6 @@
 const yargs = require('yargs');
 const db = require('./app/db');
 
-/*
-.command('initdb', 'Create a database for the webapp',{
-        'username': {
-            alias: 'u',
-            description: 'Username for the db',
-            type: 'string',
-            demandOption: 'Username is required',
-        },
-        'password': {
-            alias: 'p',
-            description: 'Password for the db',
-            type: 'string',
-            demandOption: 'Password is required',
-        }
-    })
-*/
 const argv = yargs
     .command('initproject', 'Create starter file needed to run the project')
     .command('initdb', 'Create a database for the webapp', {
