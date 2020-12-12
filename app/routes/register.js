@@ -1,7 +1,11 @@
 const passport = require('passport');
 
 module.exports.get = (req, res) => {
-    res.render('register');
+    if(req.isAuthenticated()){
+        res.redirect('/');
+    } else {
+        res.render('register');
+    }
 }
 
 module.exports.post = (req, res, next) => {
