@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Jan-Express</title>
-    <link rel="shortcut icon" href="img/twitter.png">
+    <link rel="shortcut icon" href="../img/janexlogo.png">
     <!-- icons -->
     <script src="https://kit.fontawesome.com/59c5174634.js" crossorigin="anonymous"></script>
     <!-- CSS only -->
@@ -96,17 +96,19 @@
             var warnempty = document.getElementById("warn-empty");
             var warntos = document.getElementById("warn-tos");
 
-           
+            warning.style.display = "none";
+            warnPW.style.display = "none";
+            warnempty.style.display = "none";
+            warntos.style.display = "none";
+
             if(pass == "" || firstname == "" || email == ""){
                 warning.style.display = "inline-block";
-                warnPW.style.display = "none";
                 warnempty.style.display = "inline-block";
             }
             else if (pass != passValidate) {
                 load.style.paddingLeft = '0.0cm';
                 warning.style.display = "inline-block";
                 warnPW.style.display = "inline-block";
-                warnempty.style.display = "none";
             }
             else if (!document.getElementById("tos").checked) {
                 warning.style.display = "inline-block";
@@ -114,7 +116,6 @@
             }
             else {
                 load.style.paddingLeft = '0cm';
-                warning.style.display = "none";
 
                 document.getElementById("register").submit();
             }
