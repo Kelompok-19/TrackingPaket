@@ -1,0 +1,107 @@
+<%- include('layout/header', {title : "Cek Ongkir"}) %>
+<% if (locals.message) { %>
+    <h3><%= locals.message %></h3>
+<% } %>
+<% if (locals.requests && locals.requests.length > 0) { %>
+    <table style="border: 1px solid black; border-spacing: 15px;">
+        <tr>
+            <th>
+                Nama Pengirim
+            </th>
+            <th>
+                Alamat Pengirim
+            </th>
+            <th>
+                Nomor Pengirim
+            </th>
+            <th>
+                Nama Penerima
+            </th>
+            <th>
+                Alamat Penerima
+            </th>
+            <th>
+                Nomor Penerima
+            </th>
+            <th>
+                Berat Paket
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        <% for (i in requests) { %>
+        <tr>
+            <td>
+                <%= requests[i].nama_pengirim %>
+            </td>
+            <td>
+                <%= requests[i].alamat_pengirim %>
+            </td>
+            <td>
+                <%= requests[i].no_telp_pengirim %>
+            </td>
+            <td>
+                <%= requests[i].nama_penerima %>
+            </td>
+            <td>
+                <%= requests[i].alamat_penerima %>
+            </td>
+            <td>
+                <%= requests[i].no_telp_penerima %>
+            </td>
+            <td>
+                <%= requests[i].berat %>
+            </td>
+            <td>
+                <a href="<%= locals.current_path_relative %>/<%= requests[i].request_id %>">Ambil</a>
+                <% if (locals.user['user_type'] == 0) { %>
+                 | 
+                <a href="<%= locals.current_path_relative %>/hapus/<%= requests[i].request_id %>">Hapus</a>
+                <% } %>
+            </td>
+        </tr>        
+        <% } %>
+        </ul>
+    </table>
+<% } %>
+<% if (locals.paketlist && locals.paketlist.length > 0) { %>
+    <table style="border: 1px solid black; border-spacing: 15px;">
+        <tr>
+            <th>
+                Id Paket
+            </th>
+            <th>
+                Status Paket
+            </th>
+            <th>
+                No Resi
+            </th>
+            <th>
+                Action
+            </th>
+        </tr>
+        <% for (i in paketlist) { %>
+        <tr>
+            <td>
+                <%= paketlist[i].paket_id %>
+            </td>
+            <td>
+                <%= paketlist[i].status %>
+            </td>
+            <td>
+                <%= paketlist[i].no_resi %>
+            </td>
+            <td>
+                <a href="<%= locals.current_path_relative %>/<%= paketlist[i].paket_id %>">Edit</a>
+                <% if (locals.user['user_type'] == 0) { %>
+                 | 
+                <a href="<%= locals.current_path_relative %>/hapus/<%= paketlist[i].paket_id %>">Hapus</a>
+                <% } %>
+            </td>
+        </tr>        
+        <% } %>
+        </ul>
+    </table>
+<% } %>
+<%- include('layout/footer') %>

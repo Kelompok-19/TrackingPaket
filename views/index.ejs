@@ -1,0 +1,114 @@
+<%- include('layout/header', {title : "Home JanExpress"}) %>
+    <div style="padding-top: 20px;"></div>
+    <div class="container">
+        <h1 class="mt-5" style="color:sandybrown"><strong>Yuk, Lacak Paketmu Sekarang!!</strong></h1>
+        <hr>
+        <div class="col-sm mx-3 px-5 py-3 border rounded">
+
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                  <a class="nav-link active text-danger" id="nav-resi-tab" data-toggle="tab" href="#nav-resi" role="tab" aria-controls="nav-resi" aria-selected="true">
+                    <i data-feather="package"></i>  
+                    Cek Resi</a>
+                  <a class="nav-link text-danger" id="nav-ongkir-tab" data-toggle="tab" href="#nav-ongkir" role="tab" aria-controls="nav-ongkir" aria-selected="false">
+                    <i data-feather="pocket"></i>  
+                    Cek Ongkir</a>
+                  <a class="nav-link text-danger" id="nav-qna-tab" data-toggle="tab" href="#nav-qna" role="tab" aria-controls="nav-qna" aria-selected="false">
+                    <i data-feather="help-circle"></i>  
+                    Q&amp;A</a>
+                </div>
+              </nav> 
+
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-resi" role="tabpanel" aria-labelledby="nav-resi-tab">
+                <form class="pb-3">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title text-danger">Penasaran paketmu sekarang dimana?</h5>
+                          <p class="card-text">Layanan ini memungkinkan pengguna untuk melacak status pengiriman paket</p>
+                          <a href="/status/" class="card-link text-warning">Cek Sekarang</a>
+                        </div>
+                      </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="nav-ongkir" role="tabpanel" aria-labelledby="nav-ongkir-tab">
+                <form class="pb-3">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title text-danger">Mau kirim barang tapi gatau ongkos kirimnya?</h5>
+                          <p class="card-text">Cukup memasukkan alamat tujuan dan asal, pengguna dapat langsung menghitung ongkir paket</p>
+                          <a href="/ongkir/" class="card-link text-warning">Hitung Disini</a>
+                        </div>
+                      </div>
+                </form>
+            </div>
+
+            <div class="tab-pane fade" id="nav-qna" role="tabpanel" aria-labelledby="nav-qna-tab">
+                <form class="pb-3">
+                    <div class="card">
+                        <div class="card-body">
+                          <h5 class="card-title text-danger">Masih bingung dengan fitur pengiriman yang ada?</h5>
+                          <p class="card-text">Tanyakan langsung kepada kami dan lihat jawaban dari pertanyaan serupa</p>
+                          <a href="/faq/" class="card-link text-warning">Baca Selengkapnya</a>
+                        </div>
+                      </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="card-deck justify-content-center">
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="../img/iklan1.png" class="card-img-top" alt="iklan1">
+        <div class="card-body">
+          <h5 class="card-title text-danger">PROMO!</h5>
+          <p class="card-text text-secondary">Mau kirim paket tanpa bayar ongkir?</p>
+          <a href="#" class="btn btn-danger text-white">Cek Disini</a>
+          <p class="card-text"><small class="text-muted">Syarat &amp; Ketentuan Berlaku</small></p>
+        </div>
+      </div>
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="../img/iklan2.png" class="card-img-top" alt="iklan2">
+        <div class="card-body">
+          <h5 class="card-title text-danger">BARU!</h5>
+          <p class="card-text text-secondary">Sekarang belanja bisa dimana aja kapan aja</p>
+          <a href="#" class="btn btn-danger text-white">Cek Toko Sebelah</a>
+          <p class="card-text"><small class="text-muted">Bekerja Sama Dengan Toko Sebelah</small></p>
+        </div>
+      </div>
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="../img/iklan4.png" class="card-img-top" alt="iklan4">
+        <div class="card-body">
+          <h5 class="card-title text-danger">KAPAN LAGI?</h5>
+          <p class="card-text text-secondary">Nonton film tanpa iklan sepuasnya?</p>
+          <a href="#" class="btn btn-danger text-white">Download Sekarang</a>
+          <p class="card-text"><small class="text-muted">Promo hanya berlaku hari ini</small></p>
+        </div>
+      </div>
+      <div class="card border-danger mb-3" style="max-width: 15rem;">
+        <img src="../img/iklan3.png" class="card-img-top" alt="iklan3">
+        <div class="card-body">
+          <h5 class="card-title text-danger">PENAWARAN</h5>
+          <p class="card-text text-secondary">Mau promosikan usahamu di web kami?</p>
+          <a href="#" class="btn btn-warning text-white">Hubungi Kami</a>
+          <p class="card-text"><small class="text-muted">Slot Terbatas</small></p>
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="card border-rounded">
+      <div class="card-body">
+        <blockquote class="blockquote text-right">
+            <p class="mb-0 text-danger"><strong><em>Terima Kasih Telah Mengunjungi Website Kami</em></strong></p>
+            <footer class="blockquote-footer">JAN Express</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+      
+<%- include('layout/footer') %>

@@ -1,0 +1,124 @@
+body {
+    background-image: url("res/img/janexbg.png");
+    background-repeat: no-repeat;
+  }
+
+.navbar {
+  height:58px;
+  background-color: rgb(255, 255, 255);
+}
+
+.splitscreen {
+  display:flex;
+}
+.splitscreen .left {
+    flex:0;
+}
+.splitscreen .right {
+    flex:0;
+    margin-left:190px;
+}
+
+.table{
+background-color:white;
+}
+  
+.cek-resi{
+font-size: 1.5cm;
+color: #030303;
+text-align: center;
+}
+
+.alert {
+  text-align: center;
+  padding: 20px;
+  background-color: #830900; 
+  color: white;
+  margin-bottom: 15px;
+  display: none;
+  opacity: 80%;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+#loading{
+  display: none;
+}
+
+.janexlogo {
+  margin-top:-5px;
+}
+
+
+.nav-tab{
+  margin-left:200px;
+}
+
+.current {
+  margin-top:13px;
+  margin-left:25px;
+  width:20px;
+  height:20px;
+}
+
+.current2 {
+ color:black;
+}
+
+.homemove {
+  margin-top:13px;
+  margin-left:23px;
+  width:20px;
+  height:20px;
+  color:#C0392B;
+}
+
+.ongkirmove {
+  margin-top:13px;
+  margin-left:32px;
+  width:20px;
+  height:20px;
+  color:#C0392B;
+}
+
+.faqmove {
+  margin-top:13px;
+  margin-left:9px;
+  width:20px;
+  height:20px;
+  color:#C0392B;
+}
+
+.contactusmove {
+  margin-top:13px;
+  margin-left:25px;
+  width:20px;
+  height:20px;
+  color:#C0392B;
+}
+
+.nav-item :hover > * {
+  color:black;
+}
+
+.hov {
+  color:#C0392B;
+}
+.hov :hover >* {
+  color:black;
+}
+
+

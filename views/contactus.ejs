@@ -1,0 +1,129 @@
+<%- include('layout/header', {title : "Contact Us"}) %>
+
+<style>
+  .splitscreen {
+    display: flex;
+  }
+
+  .splitscreen .left {
+    flex: 0;
+  }
+
+  .splitscreen .right {
+    flex: 0;
+    margin-left: 190px;
+  }
+
+  .map {
+    margin-left: 225px;
+  }
+
+  .logoline {
+    margin-left: 7px;
+  }
+
+  .headoffice {
+    padding: 0;
+    margin: 0;
+    line-height: 20px;
+  }
+
+  .alamat1 {
+    color: #566573;
+  }
+
+  .alamat2 {
+    color: #566573;
+  }
+</style>
+
+<div style="padding-top: 18px;"></div>
+<div class="container">
+  <h1 class="mt-5" style="color:sandybrown"><strong>Contact Us</strong></h1>
+  <hr>
+
+  <div class="splitscreen">
+    <div class="left">
+      <h5 class="headoffice"><strong>HEAD OFFICE</strong></h5>
+      <p class="alamat1">
+        Jl. Letjen S. Parman No.1<br>Jakarta Barat 11440<br>Indonesia
+      </p>
+      <p class="alamat2">
+        Contact Center. <br>(021) 123 456<br>
+        Office. <br>(021) 987 654<br>
+        E-mail. <br>customer.care@jan.id<br>
+      </p><br>
+      <p class="wa" style="color:sandybrown">
+        <img src="../img/wa.png" class="logowa" width="35" height="35" alt="">
+        0812345678
+      </p>
+      <p class="line" style="color:sandybrown">
+        <img src="../img/line.png" class="logoline" width="23" height="23" alt="">
+        &nbsp;@qwertyuiop
+      </p>
+    </div>
+
+    <div class="right">
+      <h5 class="headoffice"><strong>LOGISTICS</strong></h5>
+      <p class="alamat1">
+        Jl. Letjen S. Parman No.1<br>Jakarta Barat 11440<br>Indonesia
+      </p>
+      <p class="alamat2">
+        Contact Center. <br>(021) 456 123<br>
+        Office. <br>(021) 654 987<br>
+        E-mail. <br>logistics@jan.id<br>
+      </p><br>
+      <p class="ig" style="color:sandybrown">
+        <img src="../img/ig.png" class="logoig" width="26" height="26" alt="">
+        @JAN_ID
+      </p>
+      <p class="twitter" style="color:sandybrown">
+        <img src="../img/twitter.png" class="logotwitter" width="26" height="26" alt="">
+        @JAN_ID
+      </p>
+    </div>
+
+    <div class="map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.7113012323525!2d106.78691281430982!3d-6.169398962175763!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f65c8572640d%3A0xc0a066d78372614e!2sUniversitas%20Tarumanagara%20Kampus%20I!5e0!3m2!1sid!2sid!4v1602948170357!5m2!1sid!2sid"
+        width="400" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="">
+      </iframe>
+    </div>
+  </div>
+  <br>
+</div>
+<br>
+
+
+<div class="col-sm mx-3 px-5 py-3">
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+      <a class="nav-link text-danger" id="nav-qna-tab" data-toggle="tab" href="#nav-qna" role="tab"
+        aria-controls="nav-qna" aria-selected="true">
+        <i data-feather="help-circle"></i>
+        FAQ</a>
+    </div>
+  </nav>
+  <div class="tab-pane fade" id="nav-qna" role="tabpanel" aria-labelledby="nav-qna-tab">
+    <form class="pb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title text-danger">Masih bingung?</h5>
+          <p class="card-text">Simak jawaban dari pertanyaan-pertanyaan serupa</p>
+          <a href="/faq/" class="card-link text-warning">Klik disini</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="card border-rounded">
+  <div class="card-body">
+    <blockquote class="blockquote text-right">
+      <p class="mb-0 text-danger"><strong><em>Terima Kasih Telah Mengunjungi Website Kami</em></strong></p>
+      <footer class="blockquote-footer">JAN Express</cite></footer>
+    </blockquote>
+  </div>
+  <%- include('layout/footer') %>
