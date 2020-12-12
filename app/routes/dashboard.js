@@ -28,6 +28,7 @@ module.exports.getbase = (req, res) => {
                 assigned_staff: req.user.user_id,
             }
         });
+
         let message = null;
         if (req.query.status){
             switch (req.query.status) {
@@ -43,14 +44,17 @@ module.exports.getbase = (req, res) => {
             }
         }
 
-        status_code = await StatusCode.findAll();
-        status_map = new Map();
-
-        for (i in status_code) {
-            status_map.set(status_code[i].status_id, status_code[i].status_msg);
+        for (i in paketlist) {
+            status_code = await StatusCode.findOne({
+                raw: true,
+                where: {
+                    status_id: paketlist[i].status,
+                }
+            });
+            paketlist[i].status = status_code.status_msg;
         }
 
-        res.render('dashboard', { requests: requests, paketlist: paketlist, message: message, status_map: status_map } );
+        res.render('dashboard', { requests: requests, paketlist: paketlist, message: message } );
     }
 
     getbase(this.createstatus);

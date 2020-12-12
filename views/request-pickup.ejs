@@ -1,7 +1,7 @@
 <%- include('layout/header', {title : "Cek Ongkir"}) %>
     <form id="pickup" name="pickup" method="post" action="/pickup">
         <label for="pengirim">Nama Pengirim : </label>
-        <input class="text" name="pengirim" type="text" value="<%= locals.user['nama_depan'] %>" required /><br>
+        <input class="text" name="pengirim" type="text" value="<%= locals.user['nama_depan'] + ' ' + locals.user['nama_belakang'] %>" required /><br>
         <label for="no_telp_pengirim">Nomor Pengirim : </label>
         <input class="text" name="no_telp_pengirim" type="text" value="<%= locals.user['no_telp'] %>" required /><br>
         <label for="alamat_pickup">Alamat Pickup : </label>

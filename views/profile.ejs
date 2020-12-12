@@ -1,0 +1,20 @@
+<%- include('layout/header', {title : "Profile"}) %>
+<% if (locals.message) { %>
+    <h3><%= locals.message %></h3>
+<% } %>
+<form id="profile" name="profile" method="post" action="<%= locals.current_path %>">
+    <label for="username">Username</label>
+    <input class="text" name="username" type="text" value="<%= user.username%>" disabled/><br>
+    <label for="email">Email Address</label>
+    <input class="text" name="email" type="email" value="<%= user.email%>" required/><br>
+    <label for="nama_depan">Nama Depan</label>
+    <input class="text" name="nama_depan" type="text" value="<%= user.nama_depan%>" required/><br>
+    <label for="nama_belakang">Nama Belakang</label>
+    <input class="text" name="nama_belakang" type="text" value="<%= user.nama_belakang%>" /><br>
+    <label for="no_telp">No Telp</label>
+    <input class="text" name="no_telp" type="text" value="<%= user.no_telp%>"/><br>
+    <label for="alamat">Alamat</label>
+    <input class="text" name="alamat" type="text" value="<%= user.alamat%>"/><br>
+    <input class="button" type="submit" value="Update" />
+</form>
+<%- include('layout/footer') %>

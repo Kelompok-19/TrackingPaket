@@ -7,6 +7,7 @@ require('./routes/register').register(router);
 require('./routes/dashboard').register(router);
 require('./routes/request-pickup').register(router);
 require('./routes/admin').register(router);
+require('./routes/profile').register(router);
 require('./routes/status-pengiriman').register(router);
 require('./routes/default').register(router);
 

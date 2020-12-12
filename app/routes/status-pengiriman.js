@@ -3,7 +3,47 @@ const Request = require('../models/request');
 const StatusCode = require('../models/statuscode');
 
 module.exports.get = (req, res) => {
-    res.render('status-pengiriman');
+    async function get() {
+        if(req.isAuthenticated()){
+            requestlist = await Request.findAll({
+                raw: true,
+                where: {
+                    requester_id: req.user.user_id,
+                }
+            });
+
+            for (i in requestlist){
+                requestlist[i].paket_id = requestlist[i].request_id;
+                
+                requestlist[i].no_resi = "";
+                requestlist[i].status = "WAITING FOR STAFF";
+
+                paket = await Paket.findOne({
+                    raw: true,
+                    where: {
+                        paket_id: requestlist[i].request_id,
+                    }
+                });
+
+                if(paket !== null){
+                    status = await StatusCode.findOne({
+                        raw: true,
+                        where: {
+                            status_id: paket.status,
+                        }
+                    });
+
+                    requestlist[i].no_resi = paket.no_resi;
+                    requestlist[i].status = status.status_msg
+                }
+            }
+
+            res.render('status-pengiriman', { paketlist: requestlist });
+        } else {
+            res.render('status-pengiriman');
+        }
+    }
+    get();
 }
 
 module.exports.getid = (req, res) => {

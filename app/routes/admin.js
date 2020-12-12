@@ -5,7 +5,6 @@ const UserType = require('../models/usertype');
 
 module.exports.get = (req, res) => {
     async function get() {
-        usertypes = await UserType.findAll({raw: true});
         users = await User.findAll({
             raw: true,
             where: {
@@ -14,12 +13,17 @@ module.exports.get = (req, res) => {
                 }
             }
         });
-        usertypemap = new Map();
-        for (i in usertypes) {
-            usertypemap.set(usertypes[i].type_id, usertypes[i].type_desc);
+        for (i in users) {
+            usertype = await UserType.findOne({
+                raw: true,
+                where: {
+                    type_id: users[i].user_type,
+                }
+            });
+            users[i].user_type = usertype.type_desc
         }
 
-        res.render('admin', { usertypes: usertypemap, users: users });
+        res.render('admin', { users: users });
     }
     get();
 }

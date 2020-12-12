@@ -3,44 +3,6 @@
   function showTable() {
     var resi = document.getElementById("no-resi").value;
     window.location.href = '<%= locals.current_path %>/' + resi;
-
-    // console.log(resi);
-    // var popup = document.getElementsByClassName("alert");
-
-    // if (resi == "") {
-    //   for (var i = 0; i < popup.length; i++) {
-    //     popup[i].style.display = "block";
-    //   }
-    //   document.getElementById("no-resi").focus();
-    // }
-    // else {
-    //   var load = document.getElementById("loading")
-    //   load.style.display = "block";
-    //   for (var i = 0; i < popup.length; i++) {
-    //     popup[i].style.display = "none"
-    //   }
-    //   data = setTimeout(showData, 1000);
-    // }
-
-  }
-
-  function showData() {
-    var resi = document.getElementById("no-resi").value;
-    var showresi = document.getElementById("show-no-resi");
-    var tables = document.getElementById("info-table");
-
-
-    //showresi.innerHTML = resi;
-    //tables.style.display = "block";
-
-    //var load = document.getElementById("loading")
-    //load.style.display = "none";
-
-  }
-
-  function validate(){
-    var resi = document.getElementById("no-resi").value;
-
   }
 </script>
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -78,94 +40,62 @@
   <div class="text-center">
     <button type="button" class="btn btn-danger" onclick="showTable()">Search</button>
   </div>
-  <div class="loading-animation" id="loading" style="display: none;">
-    <div class="ui icon message">
-      <i class="notched circle loading icon"></i>
-      <div class="content">
-        <div class="header">
-          Loading, Please wait..
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div style="padding-top: 1cm; display: none;" id="info-table">
-  <div class="informasi-pengiriman">
-    <h3 style="text-align: center; font-size: 1cm;">
-      Informasi Pengiriman
-    </h3>
-    <table class="table" style="margin: auto; justify-content: center; width: fit-content; word-wrap: break-word;">
-      <tbody>
-        <tr>
-          <td>No Resi</td>
-          <td> : </td>
-          <td id="show-no-resi">0123456789</td>
-        </tr>
-        <tr>
-          <td>Status</td>
-          <td> : </td>
-          <td> <b>Delivered</b></td>
-        </tr>
-        <tr>
-          <td>Service</td>
-          <td> : </td>
-          <td>JAN</td>
-        </tr>
-        <tr>
-          <td>Dikirim Tanggal</td>
-          <td> : </td>
-          <td>17-9-2020</td>
-        </tr>
-        <tr>
-          <td>Pengirim</td>
-          <td> : </td>
-          <td>siapa</td>
-        </tr>
-        <tr>
-          <td>Dikirim ke</td>
-          <td> : </td>
-          <td>.....</td>
-        </tr>
-
-      </tbody>
-    </table>
-  </div>
-
   <hr>
 
-  <div class="status-pengiriman">
-    <h3 style="text-align: center; font-size: 1cm;">
-      Status Pengiriman
-    </h3>
-    <table class="table"
-      style="text-align: center; width: fit-content; justify-content: center; margin: auto; word-wrap: break-word;">
-      <thead class="thead-light">
-        <tr>
-          <th scope="col">Tanggal</th>
-          <th scope="col">Lokasi</th>
-          <th scope="col">Keterangan</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>19-9-2020</td>
-          <td>Surabaya</td>
-          <td>aaaaaaaaaaaaaaaaaaaaa</td>
-        </tr>
-        <tr>
-          <td>20-9-2020</td>
-          <td>Jogjakarta</td>
-          <td>bbbbbbbbbbb</td>
-        </tr>
-        <tr>
-          <td>23-9-2020</td>
-          <td>Jakarta</td>
-          <td>cccc</td>
-        </tr>
-      </tbody>
+<% if (!locals.user) { %>
+  <h2>
+    <p>
+      Anda tidak login. Login untuk melihat daftar paket yang anda buat!
+    </p>
+  </h2>
+<% } else { %>
+  <h2>
+    <% if (paketlist.length > 0) { %>
+    <table style="border: 1px solid black; border-spacing: 15px;">
+      <tr>
+          <th>
+              Id Paket
+          </th>
+          <th>
+              Status Paket
+          </th>
+          <th>
+              No Resi
+          </th>
+          <th>
+              Action
+          </th>
+      </tr>
+      <% for (i in paketlist) { %>
+      <tr>
+          <td>
+              <%= paketlist[i].paket_id %>
+          </td>
+          <td>
+              <%= paketlist[i].status %>
+          </td>
+          <td>
+              <%= paketlist[i].no_resi %>
+          </td>
+          <% if (paketlist[i].no_resi.length > 0) { %>
+          <td>
+            <a href="<%= locals.current_path_relative %>/<%= paketlist[i].no_resi %>">Cek Status</a>
+          </td>
+          <% } else { %>
+          <td>
+            <b>Mohon Tunggu Staff Kami</b>
+          </td>
+          <% } %>
+      </tr>        
+      <% } %>
+      </ul>
     </table>
-  </div>
-  <hr>
-
-  <%- include('layout/footer') %>
+    <% } else { %>
+      <h2>
+        Anda belum merequest pickup dari kami... <br>
+        Silahkan ke halaman <a href="./pickup">ini</a> untuk merequest pickup!<br>
+      </h2>
+    <% } %>
+  </h2>
+<% } %>
+<%- include('layout/footer') %>
