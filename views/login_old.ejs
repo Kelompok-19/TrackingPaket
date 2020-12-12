@@ -1,0 +1,12 @@
+<%- include('layout/header', {title : "Cek Ongkir"}) %>
+    <form id="login" name="login" method="post" action="/login">
+        <label for="username">username</label>
+        <input class="text" name="username" type="text" required/><br>
+        <label for="password">Password</label>
+        <input name="password" type="password" required/><br>
+        <input class="button" type="submit" value="Login" />
+    </form>
+    <% if (locals.message) { %>
+        <h2><%= message %></h2>
+    <% } %>
+<%- include('layout/footer') %>

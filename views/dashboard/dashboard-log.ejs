@@ -1,0 +1,30 @@
+<%- include('../layout/header', {title : "Cek Ongkir"}) %>
+<br>
+<br>
+<form id="log" name="log" method="post" action="<%= locals.current_path %>">
+    <div class="data container">
+        <h2>Detail log</h2>
+        <div class="row">
+            <div class="col-sm">
+                <label for="tipe_status">Status : </label><br>
+                <select name="tipe_status">
+                    <% for (i in logtypes) { %>
+                        <option value="<%= logtypes[i].type_id %>"><%= logtypes[i].type_name %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="message">Pesan : </label><br>
+                <input class="text" name="message" type="text" required /><br>
+            </div>
+        </div>        
+        <br>
+        <input class="button" type="submit" value="Submit" />
+        </div>
+    <% if (locals.message) { %>
+        <h2><%= message %></h2>
+    <% } %>
+</form>
+<%- include('../layout/footer') %>

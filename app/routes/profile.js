@@ -17,14 +17,12 @@ module.exports.get = (req, res) => {
 
 module.exports.post = (req, res, next) => {
     async function post() {
-        email = req.body.email;
         nama_depan = req.body.nama_depan;
         nama_belakang = req.body.nama_belakang;
         no_telp = req.body.no_telp;
         alamat = req.body.alamat;
         
         await User.update({
-            email: email,
             nama_depan: nama_depan,
             nama_belakang: nama_belakang,
             no_telp: no_telp,

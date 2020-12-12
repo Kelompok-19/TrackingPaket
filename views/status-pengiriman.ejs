@@ -51,45 +51,45 @@
 <% } else { %>
   <h2>
     <% if (paketlist.length > 0) { %>
-    <table style="border: 1px solid black; border-spacing: 15px;">
-      <tr>
-          <th>
-              Id Paket
-          </th>
-          <th>
-              Status Paket
-          </th>
-          <th>
-              No Resi
-          </th>
-          <th>
-              Action
-          </th>
-      </tr>
-      <% for (i in paketlist) { %>
-      <tr>
-          <td>
-              <%= paketlist[i].paket_id %>
-          </td>
-          <td>
-              <%= paketlist[i].status %>
-          </td>
-          <td>
-              <%= paketlist[i].no_resi %>
-          </td>
-          <% if (paketlist[i].no_resi.length > 0) { %>
-          <td>
-            <a href="<%= locals.current_path_relative %>/<%= paketlist[i].no_resi %>">Cek Status</a>
-          </td>
-          <% } else { %>
-          <td>
-            <b>Mohon Tunggu Staff Kami</b>
-          </td>
-          <% } %>
-      </tr>        
-      <% } %>
-      </ul>
-    </table>
+    <div class="waiting">
+      <h1>
+          Pesanan Anda
+      </h1>
+      <table class="table table-hover">
+          <thead>
+              <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">No. Resi</th>
+                  <th scope="col">#</th>
+              </tr>
+          </thead>
+          <tbody>
+              <% for (i in paketlist) { %>
+                <tr>
+                    <th scope="row">
+                        <%= paketlist[i].paket_id %>
+                    </th>
+                    <td>
+                        <%= paketlist[i].status %>
+                    </td>
+                    <td>
+                        <%= paketlist[i].no_resi %>
+                    </td>
+                    <% if (paketlist[i].no_resi.length > 0) { %>
+                    <td>
+                      <a href="<%= locals.current_path_relative %>/<%= paketlist[i].no_resi %>"><button class="checklist"><i data-feather="check-square"></i></button></a>
+                    </td>
+                    <% } else { %>
+                    <td>
+                      <b>Mohon Tunggu Staff Kami</b>
+                    </td>
+                    <% } %>
+                </tr>        
+              <% } %>
+          </tbody>
+      </table>
+    </div>
     <% } else { %>
       <h2>
         Anda belum merequest pickup dari kami... <br>

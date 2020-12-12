@@ -4,6 +4,8 @@ const Request = require('../models/request');
 const { isAuthenticated, isAuthenticatedAuthority } = require('../auth');
 const Paket = require('../models/paket');
 const StatusCode = require('../models/statuscode');
+const PaketLogType = require('../models/paket-logtype');
+const PaketLog = require('../models/paket-log');
 
 module.exports.createstatus = {
     SUCCESS: '0',
@@ -17,7 +19,10 @@ module.exports.getbase = (req, res) => {
             raw: true,
             where: {
                 request_id : {
-                    [Op.notIn]: [sequelize.literal('(SELECT p.paket_id FROM paket p WHERE p.paket_id = request.request_id)')]
+                    [Op.notIn]: [sequelize.literal('(SELECT p.paket_id FROM paket p WHERE p.paket_id = request.request_id)')],
+                },
+                requester_id : {
+                    [Op.not]: req.user.user_id,
                 }
             }
         });
@@ -179,9 +184,72 @@ module.exports.postid = (req, res) => {
     postid(this.createstatus);
 }
 
+module.exports.getlog = (req, res) => {
+    async function getlog() {
+        paket_id = req.params.paketId;
+
+        paket = await Paket.findOne({
+            where: {
+                paket_id: paket_id,
+            }
+        })
+
+        if(paket === null){
+            res.redirect('/dashboard');
+        } else {
+            if(paket.assigned_staff != req.user.user_id){
+                res.redirect('/dashboard');
+                return;
+            }
+
+            logtypes = await PaketLogType.findAll({
+                raw: true,
+            });
+
+            res.render('dashboard/dashboard-log', { logtypes: logtypes });
+        }
+    }
+    getlog();
+}
+
+module.exports.postlog = (req, res) => {
+    async function postlog() {
+        paket_id = req.params.paketId;
+
+        paket = await Paket.findOne({
+            where: {
+                paket_id: paket_id,
+            }
+        })
+
+        if(paket === null){
+            res.redirect('/dashboard');
+        } else {
+            if(paket.assigned_staff != req.user.user_id){
+                res.redirect('/dashboard');
+                return;
+            }
+
+            message = req.body.message;
+            type_id = req.body.tipe_status;
+
+            await PaketLog.create({
+                paket_id: paket_id,
+                log_type: type_id,
+                log_msg: message,
+            })
+
+            res.redirect('/dashboard');
+        }
+    }
+    postlog();
+}
+
 module.exports.register = function (router) {
     router.get('/dashboard', isAuthenticatedAuthority(['STAFF', 'ADMIN']), this.getbase);
     router.get('/dashboard/:reqId', isAuthenticatedAuthority(['STAFF', 'ADMIN']), this.getid);
     router.get('/dashboard/hapus/:reqId', isAuthenticatedAuthority(['ADMIN']), this.getremoveid);
+    router.get('/dashboard/log/:paketId', isAuthenticatedAuthority(['STAFF', 'ADMIN']), this.getlog);
     router.post('/dashboard/:reqId', isAuthenticatedAuthority(['STAFF', 'ADMIN']), this.postid);
+    router.post('/dashboard/log/:paketId', isAuthenticatedAuthority(['STAFF', 'ADMIN']), this.postlog);
 }

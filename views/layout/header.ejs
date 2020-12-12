@@ -1,70 +1,214 @@
 <!DOCTYPE HTML>
 <html>
-  <head>
-    <!--Jangan lupa ganti nama template-->
-    <title><%= title %></title>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-  </head>
-  <body>
-    <nav class="navbar navbar-light fixed-top bg-light navbar-expand shadow">
-      <div class="collapse navbar-collapse">
-        <a class="navbar-brand" href="#">
-          <img src="../img/janexlogo.png" width="30" height="30" alt="">
-        </a>
-        <ul class="navbar-nav">
-          <!--
-          Jangan lupa kasih class active ke page kalian yang aktif di tag li
-          Contoh: class=<li class="nav-item active">
-          -->
-          <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/status">Cek Resi</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/ongkir">Cek Ongkir</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/contact">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/faq">Q&amp;A</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/pickup">pickup</a>
-          </li>
-          <% if (!locals.user) { %>
-            <li class="nav-item">
-              <a class="nav-link" href="/register">register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">login</a>
-            </li>
-          <% } else { %>
-            <% if (locals.user['user_type'] in [0, 1]) { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/dashboard">dashboard</a>
-              </li>
+
+<head>
+  <title><%= title %></title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-light fixed-top bg-light navbar-expand shadow">
+    <div class="collapse navbar-collapse">
+      <a class="navbar-brand" href="#">
+        <img src="../img/janexlogo.png" width="30" height="30" alt="">
+      </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <i class="fas fa-sign-out-alt"></i>
+          <a class="nav-link" href="/status">Cek Resi</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/ongkir">Cek Ongkir</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/faq">Q&amp;A</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="right-nav" style="color: grey;">
+        <% if (!locals.user) { %>
+        <div class="col btn-group" role="group" id="visitor">
+            <div class="login">
+                <a href="/login">
+                    <button style="border: none; color: grey; background-color: transparent; margin-right: 0.5cm;">
+                        <i data-feather="user" style="margin-left: 0.5cm;"></i>
+                        <span>Login</span>
+                    </button>
+                </a>
+            </div>
+            <div class="regist" style="border-left: solid;">
+                <a href="/register">
+                    <button style="border: none; color: grey; background-color: transparent;">
+                    <i data-feather="user-plus" style="margin-left: 0.5cm;"></i>
+                    <span>Register</span>
+                    </button>
+                </a>
+            </div>
+        </div>
+        <% } else { %>
+            <% if (locals.user['user_type'] == 2) { %>
+            <div class="col btn-group" role="group" id="login-user">
+                <div class="collapse navbar-collapse" id="main_nav">
+                    <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i data-feather="user"></i>
+                        <span><%= user.username %></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/profile"> Profile </a></li>
+                        <li><a class="dropdown-item" href="/status"> Transaksi </a>
+                        <!-- <ul class="submenu dropdown-menu">
+                            <li><a class="dropdown-item" href=""> Picking up</a></li>
+                            <li><a class="dropdown-item" href=""> Delivering</a></li>
+                            <li><a class="dropdown-item" href=""> Finished</a></li>
+                        </ul> -->
+                        </li>
+                        <li><a class="dropdown-item" href="/pickup">Buat pesanan baru</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout" style="width: 3.5cm;">
+                        <i data-feather="log-out" style="border-left: solid; width: 1cm;"></i>
+                        <span style="margin-top: 1cm;">Logout</span>
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+            </div>
+            <% } else if (locals.user['user_type'] == 1) { %>
+            <div class="col btn-group" role="group" id="login-staff">
+                <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
+                        <i data-feather="user"></i>
+                        <span><%= user.username %></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/profile"> Profile </a></li>
+                        <li><a class="dropdown-item" href="/dashboard">Cek daftar pesanan</a></li>
+                        <li><a class="dropdown-item" href="/status"> Transaksi </a>
+                        <!-- <ul class="submenu dropdown-menu">
+                            <li><a class="dropdown-item" href=""> Waiting List</a></li>
+                            <li><a class="dropdown-item" href=""> On Progress</a></li>
+                            <li><a class="dropdown-item" href=""> Finished</a></li>
+                        </ul> -->
+                        </li>
+                        <li><a class="dropdown-item" href="/pickup">Buat pesanan baru</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="width: 3.5cm;">
+                        <i data-feather="log-out" style="border-left: solid; width: 1cm;"></i>
+                        <span style="margin-top: 1cm;">Logout</span>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </div>
+            <% } else if (locals.user['user_type'] == 0) { %>
+            <div class="col btn-group" role="group" id="login-admin">
+                <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/login" data-toggle="dropdown">
+                        <i data-feather="user"></i>
+                        <span><%= user.username %></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/profile"> Profile </a></li>
+                        <li><a class="dropdown-item" href="/admin"> Manage </a>
+                        <!-- <ul class="submenu dropdown-menu">
+                            <li><a class="dropdown-item" href="/ad"> Staff</a></li>
+                            <li><a class="dropdown-item" href=""> User</a></li>
+                        </ul> -->
+                        </li>
+                        <li><a class="dropdown-item" href="/dashboard">Cek daftar pesanan</a></li>
+                        <li><a class="dropdown-item" href="/status"> Transaksi </a>
+                        <!-- <ul class="submenu dropdown-menu">
+                            <li><a class="dropdown-item" href=""> Waiting List</a></li>
+                            <li><a class="dropdown-item" href=""> On Progress</a></li>
+                            <li><a class="dropdown-item" href=""> Finished</a></li>
+                        </ul> -->
+                        </li>
+                        <li><a class="dropdown-item" href="/pickup">Buat pesanan baru</a></li>
+                    </ul>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/logout" style="width: 3.5cm;">
+                        <i data-feather="log-out" style="border-left: solid; width: 1cm;"></i>
+                        <span style="margin-top: 1cm;">Logout</span>
+                    </a>
+                    </li>
+                </ul>
+                </div>
+            </div>
             <% } %>
-            <% if (locals.user['user_type'] == 0) { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin">admin</a>
-              </li>
-            <% } %>
-            <li class="nav-item">
-              <a class="nav-link" href="/profile">profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/logout">logout</a>
-            </li>
-          <% } %>
-        </ul>
-      </div>
-    </nav>
-    <div style="margin-top: 50px;">
-      <!-- Masukin isi html kalian disini -->
+        <% } %>
+        <script>
+        $(document).on('click', '.dropdown-menu', function (e) {
+            e.stopPropagation();
+        });
+
+        // make it as accordion for smaller screens
+        if ($(window).width() < 992) {
+            $('.dropdown-menu a').click(function (e) {
+            e.preventDefault();
+            if ($(this).next('.submenu').length) {
+                $(this).next('.submenu').toggle();
+            }
+            $('.dropdown').on('hide.bs.dropdown', function () {
+                $(this).find('.submenu').hide();
+            })
+            });
+        }
+        </script>
+        <style>
+        .dropdown-menu .dropdown-toggle:after {
+            border-top: .3em solid transparent;
+            border-right: 0;
+            border-bottom: .3em solid transparent;
+            border-left: .3em solid;
+        }
+
+        .dropdown-menu .dropdown-menu {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        .dropdown-menu li {
+            position: relative;
+        }
+
+        .nav-item .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -7px;
+        }
+
+        .dropdown-menu>li:hover {
+            background-color: #f1f1f1
+        }
+
+        .dropdown-menu>li:hover>.submenu {
+            display: block;
+        }
+        </style>
+    </div>
+</nav>
+
+  <div style="padding-top: 1.4cm;">
