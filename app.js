@@ -149,6 +149,8 @@ if(argv._.includes('run')){
     const passport = require('passport');
     const bodyparser = require('body-parser');
 
+    const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
     require('./app/config/passport')(passport);
 
     app = express();
@@ -157,6 +159,9 @@ if(argv._.includes('run')){
     app.use(session({
         secret: setting.secret,
         resave: false,
+        store: new SequelizeStore({
+            db: db.db(),
+        }),
         saveUninitialized: false
     }));
 
