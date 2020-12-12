@@ -3,7 +3,7 @@
 
 <head>
     <!--Jangan lupa ganti nama template-->
-    <title>waiting list staff/admin</title>
+    <title>add</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -211,15 +211,6 @@
                     button {
                         border: none;
                         padding: 0.2cm;
-                        border-radius: 10px;
-                    }
-
-                    button.checklist{
-                        background-color: yellowgreen;
-                    }
-
-                    button.delete{
-                        background-color: tomato;
                     }
                 </style>
             </div>
@@ -227,44 +218,63 @@
 
     <div style="padding-top: 1.7cm;">
         <!-- Masukin isi html kalian disini -->
-        <div class="waiting">
+        <div class="add-package" style="padding-left: 1cm;">
             <h1>
-                Waiting
+                Buat pesanan baru
             </h1>
+            <hr>
+            <div class="add-data container">
+                <div class="row">
+                    <div class="pengirim col-sm">
+                        <label for="nama">Nama Pengirim</label>
+                        <br>
+                        <input type="text" name="" id="">
+                    </div>
+                    <div class="penerima col-sm">
+                        <label for="nama">Nama penerima</label>
+                        <br>
+                        <input type="text" name="" id="">
+                    </div>
 
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <button class="checklist"><i data-feather="check-square"></i></button>
-                            <button class="delete"><i data-feather="x"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>
-                            <button class="checklist"><i data-feather="check-square"></i></button>
-                            <button class="delete"><i data-feather="x"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                </div>
+                <div class="row">
+                    <div class="alamat-pengirim col-sm" style="padding-top: 0.4cm; padding-bottom: 0.4cm;">
+                        <label for="alamat-pengirim">Alamat Pengirim</label>
+                        <br>
+                        <textarea rows="3" cols="30"></textarea>
+                    </div>
+                    <div class="alamat-tujuan col-sm" style="padding-bottom: 0.4cm; padding-top: 0.4cm;">
+                        <label for="alamat-tujuan">Alamat Tujuan</label>
+                        <br>
+                        <textarea rows="3" cols="30"></textarea>
+                    </div>
+                </div>
+                <div class="row" style="padding-bottom: 0.4cm;">
+                    <div class="telp-pengirim col-sm">
+                        <label for="telp-pengirim">Nomor Telepon pengirim</label>
+                        <br>
+                        <input type="tel" name="" id="" placeholder="888 888 8888">
+                    </div>
+                    <div class="telp-penerima col-sm">
+                        <label for="alamat-penerima">Nomor Telepon Penerima</label>
+                        <br>
+                        <input type="tel" name="" id="" placeholder="888 888 8888">
+                    </div>
+                </div>
+
+                <div class="berat" style="padding-bottom: 0.4cm;">
+                    <label for="nama">Estimasi berat (kg)</label>
+                    <br>
+                    <input type="number" name="" id="" min="1" step="1" value="1">
+                </div>
+                <div class="submit" style="padding-top: 0.2cm;">
+                    <button style="border: solid 2px; border-radius: 3px;"><b>Submit</b></button>
+                </div>
+
+            </div>
+
         </div>
+
 
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

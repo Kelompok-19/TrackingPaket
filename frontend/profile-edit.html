@@ -3,7 +3,7 @@
 
 <head>
   <!--Jangan lupa ganti nama template-->
-  <title>navbar</title>
+  <title>Profile</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -135,7 +135,7 @@
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="#"> Manage > </a>
                   <ul class="submenu dropdown-menu">
-                    <li><a class="dropdown-item" href=""> Staff</a></li>
+                    <li><a class="dropdown-item" href="manage-user.html"> Staff</a></li>
                     <li><a class="dropdown-item" href=""> User</a></li>
                   </ul>
                 </li>
@@ -158,66 +158,98 @@
           </ul>
         </div>
 
-      <script>
-        $(document).on('click', '.dropdown-menu', function (e) {
-          e.stopPropagation();
-        });
-
-        // make it as accordion for smaller screens
-        if ($(window).width() < 992) {
-          $('.dropdown-menu a').click(function (e) {
-            e.preventDefault();
-            if ($(this).next('.submenu').length) {
-              $(this).next('.submenu').toggle();
-            }
-            $('.dropdown').on('hide.bs.dropdown', function () {
-              $(this).find('.submenu').hide();
-            })
+        <script>
+          $(document).on('click', '.dropdown-menu', function (e) {
+            e.stopPropagation();
           });
-        }
-      </script>
-      <style>
-        .dropdown-menu .dropdown-toggle:after {
-          border-top: .3em solid transparent;
-          border-right: 0;
-          border-bottom: .3em solid transparent;
-          border-left: .3em solid;
-        }
 
-        .dropdown-menu .dropdown-menu {
-          margin-left: 0;
-          margin-right: 0;
-        }
+          // make it as accordion for smaller screens
+          if ($(window).width() < 992) {
+            $('.dropdown-menu a').click(function (e) {
+              e.preventDefault();
+              if ($(this).next('.submenu').length) {
+                $(this).next('.submenu').toggle();
+              }
+              $('.dropdown').on('hide.bs.dropdown', function () {
+                $(this).find('.submenu').hide();
+              })
+            });
+          }
+        </script>
+        <style>
+          .dropdown-menu .dropdown-toggle:after {
+            border-top: .3em solid transparent;
+            border-right: 0;
+            border-bottom: .3em solid transparent;
+            border-left: .3em solid;
+          }
 
-        .dropdown-menu li {
-          position: relative;
-        }
+          .dropdown-menu .dropdown-menu {
+            margin-left: 0;
+            margin-right: 0;
+          }
 
-        .nav-item .submenu {
-          display: none;
-          position: absolute;
-          left: 100%;
-          top: -7px;
-        }
+          .dropdown-menu li {
+            position: relative;
+          }
 
-        .dropdown-menu>li:hover {
-          background-color: #f1f1f1
-        }
+          .nav-item .submenu {
+            display: none;
+            position: absolute;
+            left: 100%;
+            top: -7px;
+          }
 
-        .dropdown-menu>li:hover>.submenu {
-          display: block;
-        }
-      </style>
+          .dropdown-menu>li:hover {
+            background-color: #f1f1f1
+          }
 
-
-
-    </div>
-
-
-
+          .dropdown-menu>li:hover>.submenu {
+            display: block;
+          }
+        </style>
+      </div>
   </nav>
+
   <div style="padding-top: 1.7cm;">
     <!-- Masukin isi html kalian disini -->
+
+    <div class="data container">
+      <div class="row">
+        <div class="uname col-sm">
+          <label for="uname">Username</label>
+          <input type="text" name="" id="" placeholder="(username sebelumnya)" style="margin-left: 0.5cm;">
+        </div>
+        <div class="email col-sm">
+          <label for="email">Email</label>
+          <input type="text" name="" id="" disabled placeholder="(email sebelumnya)" style="margin-left: 0.5cm;">
+        </div>
+      </div>
+      <hr>
+      <h2>Data Pribadi</h2>
+      <hr>
+      <div class="row">
+        <div class="alamat col-sm" style="padding-top: 0.4cm; padding-bottom: 0.4cm;">
+          <label for="alamat-pengirim">Alamat</label>
+          <br>
+          <textarea rows="3" cols="30" placeholder="(alamat sebelumnya)"></textarea>
+        </div>
+      </div>
+      <div class="row" style="padding-bottom: 0.4cm;">
+        <div class="telp col-sm">
+          <label for="telp">Nomor Telepon</label>
+          <br>
+          <input type="tel" name="" id="" placeholder="(telp sblm)">
+        </div>
+      </div>
+
+      <div class="save" style="padding-top: 0.2cm;">
+        <button style="border: solid 2px; border-radius: 3px;">
+          <i data-feather="save"></i>
+          <b>Simpan Perubahan</b>
+        </button>
+      </div>
+    </div>
 
 
 
