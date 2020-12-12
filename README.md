@@ -2,7 +2,7 @@
 
 Sebuah website sederhana untuk bisnis logistik JAN Express.
 
-Di Deploy menggunakan Heroku.
+Dideploy menggunakan Heroku.
 
 <a href="https://tracking-paket.herokuapp.com/">
 <img src="https://github.com/Kelompok-19/TrackingPaket/blob/master/static/img/kurir.jpg" alt="Kurir">

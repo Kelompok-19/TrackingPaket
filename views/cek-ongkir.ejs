@@ -1,86 +1,115 @@
 <%- include('layout/header', {title : "Cek Ongkir"}) %>
+<div style="padding-top: 0px;">
+<div class="jumbotron" style="background-color:#FDEBD0">
+<h1 class="display-3">Cek Ongkir!</h1>
+<p class="lead">
+  Cek ongkir di halaman ini! Mudah caranya tinggal masukan kota asal dan tujuan, lalu
+  masukan berat paket.
+</p>
+<hr>
+</div>
 
-    <div style="padding-top: 0px;">
-      <div class="jumbotron" style="background-color:#FDEBD0">
-        <h1 class="display-3">Cek Ongkir!</h1>
-        <p class="lead">
-          Cek ongkir di halaman ini! Mudah caranya tinggal masukan kota asal dan tujuan, lalu
-          masukan berat paket.
-        </p>
-        <hr>
-      </div>
-      
-      <div style="margin: 30px">
-        <h1 class="font-weight-bold">
-          Cek Ongkir:
-        </h1>
-        <p class="font-weight-light" style="padding-bottom: 20px;">
-          Silahkan cek ongkir disini. Jika dibutuhkan bisa cek konversi dari volume ke berat di bawah
-          halaman ini.
-        </p>
-        <div class="container">
-          <div class="row">
-            <div class="col" style="padding: 20px;">
-              <form>
-                <label for="kotaAsal">Kota Asal:</label>
-                <select class="form-control" id="kotaAsal">
-                  <option>Jakarta</option>
-                  <option>Bekasi</option>
-                  <option>Yogyakarta</option>
-                </select>
-                <label for="kotaAsal">Kota Tujuan:</label>
-                <select class="form-control" id="kotaTujuan">
-                  <option>Jakarta</option>
-                  <option>Bekasi</option>
-                  <option>Yogyakarta</option>
-                </select>
-                <div class="form-row">
-                  <div class="form-group col-md">
-                    <label for="berat">Berat:</label>
-                    <input type="number" class="form-control " id="berat" min="1" value="1">
-                  </div>
-                  <div class="form-group col-sm-3">
-                    <label for="suffix"><wbr></label>
-                    <input type="text" readonly class="form-control" id="suffix" value="kg">
-                  </div>
-                </div>
-                <input type="submit" class="btn btn-primary" value="Cek Harga">
-              </form>
-            </div>
-            <div class="col border border-secondary" style="padding: 20px;">
-              <p class="font-weight-light">
-                Silahkan input data di sebelah kiri.
-              </p>
-            </div>
+<div style="margin: 30px">
+<h1 class="font-weight-bold">
+  Cek Ongkir:
+</h1>
+<p class="font-weight-light" style="padding-bottom: 20px;">
+  Silahkan cek ongkir disini. Jika dibutuhkan bisa cek konversi dari volume ke berat di bawah
+  halaman ini.
+</p>
+<div class="container">
+  <div class="row">
+    <div class="col" style="padding: 20px;">
+      <form>
+        <label for="kotaAsal">Kota Asal:</label>
+        <select class="form-control" id="kotaAsal">
+          <option>Jakarta</option>
+          <option>Bekasi</option>
+          <option>Yogyakarta</option>
+        </select>
+        <label for="kotaAsal">Kota Tujuan:</label>
+        <select class="form-control" id="kotaTujuan">
+          <option>Jakarta</option>
+          <option>Bekasi</option>
+          <option>Yogyakarta</option>
+        </select>
+        <div class="form-row">
+          <div class="form-group col-md">
+            <label for="berat">Berat:</label>
+            <input type="number" class="form-control " id="berat" min="1" value="1">
+          </div>
+          <div class="form-group col-sm-3">
+            <label for="suffix"><wbr></label>
+            <input type="text" readonly class="form-control" id="suffix" value="kg">
           </div>
         </div>
-        
-        <h1 class="font-weight-bold" style="padding-top: 40px;">
-          Konversi volume ke berat:
-        </h1>
-        <p class="font-weight-light" style="padding-bottom: 20px;">
-          Dibawah bisa dilakukan konversi dari volume ke berat yang bisa diinput ke
-          form diatas.
-        </p>
-        <div class="container">
-          <div class="row">
-            <div class="col" style="padding: 20px;">
-              <form class="form-inline">
-                <label for="panjang" style="padding-right: 20px; padding-left: 10px;">P (cm)</label>
-                <input type="number" class="form-control" id="panjang" min="1" value="1">
-                <label for="lebar" style="padding-right: 20px; padding-left: 10px;">L (cm)</label>
-                <input type="number" class="form-control" id="lebar" min="1" value="1">
-                <label for="tinggi" style="padding-right: 20px; padding-left: 10px;">T (cm)</label>
-                <input type="number" class="form-control" id="tinggi" min="1" value="1">
-                <input type="submit" class="btn btn-primary" value="Konversi" style="margin-left: 20px">
-              </form>
-            </div>
-          </div>
-          <div class="row">
-            <p style="padding: 20px;" class="font-weight-light">
-              Silahkan input perhitungan diatas lalu tekan tombol konversi.
-            </p>
-          </div>
-        </div>
+        <input id="cekOngkir" type="button" class="btn btn-primary" value="Cek Harga">
+      </form>
+    </div>
+    <div class="col border border-secondary" style="padding: 20px;">
+      <p class="font-weight-light" id="hasilOngkir">
+        Silahkan input data di sebelah kiri.
+      </p>
+    </div>
+  </div>
+</div>
+<script>
+function kotaToWeight(namakota) {
+  if(namakota == "Jakarta") return 0;
+  if(namakota == "Bekasi") return 1;
+  if(namakota == "Yogyakarta") return 5;
+  else return 10;
+}
+
+function hitungOngkir() {
+  berat = parseInt(document.getElementById("berat").value);
+  kota_asal = kotaToWeight(document.getElementById("kotaAsal").value);
+  kota_tujuan = kotaToWeight(document.getElementById("kotaTujuan").value);
+  
+  document.getElementById("hasilOngkir").innerHTML = "Rp. " + (berat * 9000 * (Math.abs(kota_asal-kota_tujuan) + 1));
+}
+
+document.getElementById("cekOngkir").addEventListener("click", hitungOngkir);
+</script>
+<h1 class="font-weight-bold" style="padding-top: 40px;">
+  Konversi volume ke berat:
+  </h1>
+  <p class="font-weight-light" style="padding-bottom: 20px;">
+    Dibawah bisa dilakukan konversi dari volume ke berat yang bisa diinput ke
+    form diatas.
+  </p>
+  <div class="container">
+    <div class="row">
+      <div class="col" style="padding: 20px;">
+        <form class="form-inline">
+          <label for="panjang" style="padding-right: 20px; padding-left: 10px;">P (cm)</label>
+          <input type="number" class="form-control" id="panjang" min="1" value="1">
+          <label for="lebar" style="padding-right: 20px; padding-left: 10px;">L (cm)</label>
+          <input type="number" class="form-control" id="lebar" min="1" value="1">
+          <label for="tinggi" style="padding-right: 20px; padding-left: 10px;">T (cm)</label>
+          <input type="number" class="form-control" id="tinggi" min="1" value="1">
+          <input id="konversi" type="button" class="btn btn-primary" value="Konversi" style="margin-left: 20px">
+        </form>
       </div>
+    </div>
+    <div class="row">
+      <h2>
+        <p id="hasil" style="padding: 20px;" class="font-weight-light">
+          Silahkan input perhitungan diatas lalu tekan tombol konversi.
+        </p>
+      </h2>      
+    </div>
+  </div>
+</div>
+<script>
+  function hitungBerat() {
+    panjang = parseInt(document.getElementById("panjang").value);
+    lebar = parseInt(document.getElementById("lebar").value);
+    tinggi = parseInt(document.getElementById("tinggi").value);
+    
+    document.getElementById("hasil").innerHTML = Math.ceil(panjang*lebar*tinggi/5000)+ " kg";
+  }
+  
+  document.getElementById("konversi").addEventListener("click", hitungBerat);
+</script>
 <%- include('layout/footer') %>

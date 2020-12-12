@@ -1,22 +1,6 @@
 const yargs = require('yargs');
 const db = require('./app/db');
 
-/*
-.command('initdb', 'Create a database for the webapp',{
-        'username': {
-            alias: 'u',
-            description: 'Username for the db',
-            type: 'string',
-            demandOption: 'Username is required',
-        },
-        'password': {
-            alias: 'p',
-            description: 'Password for the db',
-            type: 'string',
-            demandOption: 'Password is required',
-        }
-    })
-*/
 const argv = yargs
     .command('initproject', 'Create starter file needed to run the project')
     .command('initdb', 'Create a database for the webapp', {
@@ -149,7 +133,13 @@ if(argv._.includes('run')){
     const passport = require('passport');
     const bodyparser = require('body-parser');
 
+    const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
     require('./app/config/passport')(passport);
+
+    const store = new SequelizeStore({
+        db: db.db(),
+    });
 
     app = express();
     app.set('view engine', 'ejs');
@@ -157,8 +147,13 @@ if(argv._.includes('run')){
     app.use(session({
         secret: setting.secret,
         resave: false,
+        store: store,
         saveUninitialized: false
     }));
+
+    store.sync();
+
+
 
     app.use(passport.initialize());
     app.use(passport.session());
