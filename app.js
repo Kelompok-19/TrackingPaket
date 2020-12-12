@@ -88,11 +88,14 @@ if(argv._.includes('initdb')){
         last_name: prompt('Admin last name: '),
     };
 
-    let setting = undefined;
+    let setting = null;
 
     if(argv.heroku){
         const url = require('url');
         db_connection_string = url.parse(process.env.DATABASE_URL);
+
+        setting.dbOptions = null;
+
         setting.dbOptions.dbName = process.env.DATABASE_NAME;
         setting.dbOptions.host = db_connection_string.hostname;
         setting.dbOptions.port = db_connection_string.port;
@@ -105,7 +108,7 @@ if(argv._.includes('initdb')){
         setting.port = process.env.PORT || 80;
         setting.secret = process.env.SECRET;
     } else {
-        let fs = require('fs');
+        const fs = require('fs');
         setting = fs.readFileSync('settings.json');
         setting = JSON.parse(setting);
     }
@@ -115,11 +118,14 @@ if(argv._.includes('initdb')){
 }
 
 if(argv._.includes('run')){
-    let setting = undefined;
+    let setting = null;
 
     if(argv.heroku){
         const url = require('url');
         db_connection_string = url.parse(process.env.DATABASE_URL);
+
+        setting.dbOptions = null;
+
         setting.dbOptions.dbName = process.env.DATABASE_NAME;
         setting.dbOptions.host = db_connection_string.hostname;
         setting.dbOptions.port = db_connection_string.port;
