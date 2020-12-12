@@ -1,107 +1,137 @@
 <%- include('layout/header', {title : "Cek Ongkir"}) %>
+<div style="margin: 20px;">
 <% if (locals.message) { %>
-    <h3><%= locals.message %></h3>
+    <br>
+    <h2><%= locals.message %></h2>
+    <br>
 <% } %>
 <% if (locals.requests && locals.requests.length > 0) { %>
-    <table style="border: 1px solid black; border-spacing: 15px;">
-        <tr>
-            <th>
-                Nama Pengirim
-            </th>
-            <th>
-                Alamat Pengirim
-            </th>
-            <th>
-                Nomor Pengirim
-            </th>
-            <th>
-                Nama Penerima
-            </th>
-            <th>
-                Alamat Penerima
-            </th>
-            <th>
-                Nomor Penerima
-            </th>
-            <th>
-                Berat Paket
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-        <% for (i in requests) { %>
-        <tr>
-            <td>
-                <%= requests[i].nama_pengirim %>
-            </td>
-            <td>
-                <%= requests[i].alamat_pengirim %>
-            </td>
-            <td>
-                <%= requests[i].no_telp_pengirim %>
-            </td>
-            <td>
-                <%= requests[i].nama_penerima %>
-            </td>
-            <td>
-                <%= requests[i].alamat_penerima %>
-            </td>
-            <td>
-                <%= requests[i].no_telp_penerima %>
-            </td>
-            <td>
-                <%= requests[i].berat %>
-            </td>
-            <td>
-                <a href="<%= locals.current_path_relative %>/<%= requests[i].request_id %>">Ambil</a>
-                <% if (locals.user['user_type'] == 0) { %>
-                 | 
-                <a href="<%= locals.current_path_relative %>/hapus/<%= requests[i].request_id %>">Hapus</a>
+    <br>
+    <div class="sending">
+        <h1>
+            Request Pending
+        </h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Nama Pengirim
+                    </th>
+                    <th scope="col">
+                        Alamat Pengirim
+                    </th>
+                    <th scope="col">
+                        Nomor Pengirim
+                    </th>
+                    <th scope="col">
+                        Nama Penerima
+                    </th>
+                    <th scope="col">
+                        Alamat Penerima
+                    </th>
+                    <th scope="col">
+                        Nomor Penerima
+                    </th>
+                    <th scope="col">
+                        Berat Paket
+                    </th>
+                    <th scope="col">
+                        Action
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for (i in requests) { %>
+                <tr>
+                    <th scope="row">
+                        <%= requests[i].nama_pengirim %>
+                    </th>
+                    <td>
+                        <%= requests[i].alamat_pengirim %>
+                    </td>
+                    <td>
+                        <%= requests[i].no_telp_pengirim %>
+                    </td>
+                    <td>
+                        <%= requests[i].nama_penerima %>
+                    </td>
+                    <td>
+                        <%= requests[i].alamat_penerima %>
+                    </td>
+                    <td>
+                        <%= requests[i].no_telp_penerima %>
+                    </td>
+                    <td>
+                        <%= requests[i].berat %>
+                    </td>
+                    <td>
+                        <a href="<%= locals.current_path_relative %>/<%= requests[i].request_id %>"><button class= "checklist"><i data-feather="check-square"></i></button></a>
+                        <% if (locals.user['user_type'] == 0) { %>
+                            | 
+                        <a href="<%= locals.current_path_relative %>/hapus/<%= requests[i].request_id %>"><button class="delete"><i data-feather="x"></i></button></a>
+                        <% } %>
+                    </td>
+                </tr>        
                 <% } %>
-            </td>
-        </tr>        
-        <% } %>
-        </ul>
-    </table>
-<% } %>
+            </tbody>
+        </table>
+    </div>
+<% } else { %>
+<br>
+<br>
+<h2>Tidak ada baru pesanan saat ini...</h2>
+<% } >
 <% if (locals.paketlist && locals.paketlist.length > 0) { %>
-    <table style="border: 1px solid black; border-spacing: 15px;">
-        <tr>
-            <th>
-                Id Paket
-            </th>
-            <th>
-                Status Paket
-            </th>
-            <th>
-                No Resi
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-        <% for (i in paketlist) { %>
-        <tr>
-            <td>
-                <%= paketlist[i].paket_id %>
-            </td>
-            <td>
-                <%= paketlist[i].status %>
-            </td>
-            <td>
-                <%= paketlist[i].no_resi %>
-            </td>
-            <td>
-                <a href="<%= locals.current_path_relative %>/<%= paketlist[i].paket_id %>">Edit</a>
-                <% if (locals.user['user_type'] == 0) { %>
-                 | 
-                <a href="<%= locals.current_path_relative %>/hapus/<%= paketlist[i].paket_id %>">Hapus</a>
-                <% } %>
-            </td>
-        </tr>        
-        <% } %>
-        </ul>
+<div class="sending">
+    <h1>
+        Request yang diambil
+    </h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">
+                    ID Paket
+                </th>
+                <th scope="col">
+                    Status Paket
+                </th>
+                <th scope="col">
+                    No Resi
+                </th>
+                <th scope="col">
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (i in paketlist) { %>
+            <tr>
+                <th scope="row">
+                    <%= paketlist[i].paket_id %>
+                </th>
+                <td>
+                    <%= paketlist[i].status %>
+                </td>
+                <td>
+                    <%= paketlist[i].no_resi %>
+                </td>
+                <td>
+                    <a href="<%= locals.current_path_relative %>/<%= paketlist[i].paket_id %>"><button class= "checklist"><i data-feather="check-square"></i></button></a>
+                        |
+                    <a href="<%= locals.current_path_relative %>/log/<%= paketlist[i].paket_id %>"><button class= "checklist"><i data-feather="file-text"></i></button></a><% if (locals.user['user_type'] == 0) { %>
+                        | 
+                    <a href="<%= locals.current_path_relative %>/hapus/<%= paketlist[i].paket_id %>"><button class="delete"><i data-feather="x"></i></button></a>
+                    <% } %>
+                </td>
+            </tr>      
+            <% } %>
+        </tbody>
     </table>
-<% } %>
+</div>
+</div>
+<% } else { %>
+    <br>
+    <br>
+    <h2>Tidak ada pesanan yang telah terambil untuk sekarang...</h2>
+<% } >
 <%- include('layout/footer') %>

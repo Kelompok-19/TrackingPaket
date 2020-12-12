@@ -1,19 +1,49 @@
 <%- include('../layout/header', {title : "Cek Ongkir"}) %>
+<br>
+<br>
 <form id="pickup" name="pickup" method="post" action="<%= locals.current_path %>">
-    <label for="username">Username</label>
-    <input class="text" name="username" type="text" value="<%= selected_user.username %>" disabled/><br>
-    <label for="email">Email Address</label>
-    <input class="text" name="email" type="email" value="<%= selected_user.email %>"/><br>
-    <label for="nama_depan">Nama Depan</label>
-    <input class="text" name="nama_depan" type="text" value="<%= selected_user.nama_depan %>" disabled/><br>
-    <label for="nama_belakang">Nama Belakang</label>
-    <input class="text" name="nama_belakang" type="text" value="<%= selected_user.nama_belakang %>" disabled/><br>
-    <label for="tipe_user">Tipe Akun</label>
-    <select name="tipe_user">
-        <% for (i in usertypes) { %>
-            <option value="<%= usertypes[i].type_id %>" <% if (usertypes[i].type_id == selected_user.user_type) { %>selected<% } %>><%= usertypes[i].type_desc %></option>
-        <% } %>
-    </select>
-    <input class="btn" type="submit" value="Submit" />
+    <div class="data container">
+        <h2>Edit Account</h2>
+        <div class="row">
+            <div class="col-sm">
+                <label for="username">Username : </label><br>
+                <input class="text" name="username" type="text" value="<%= selected_user.username %>" disabled/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="email">Email Address</label><br>
+                <input class="text" name="email" type="email" value="<%= selected_user.email %>"/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="nama_depan">Nama Depan</label><br>
+                <input class="text" name="nama_depan" type="text" value="<%= selected_user.nama_depan %>" disabled/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="nama_belakang">Nama Belakang</label><br>
+                <input class="text" name="nama_belakang" type="text" value="<%= selected_user.nama_belakang %>" disabled/><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="tipe_user">Tipe Akun</label><br>
+                <select name="tipe_user">
+                    <% for (i in usertypes) { %>
+                        <option value="<%= usertypes[i].type_id %>" <% if (usertypes[i].type_id == selected_user.user_type) { %>selected<% } %>><%= usertypes[i].type_desc %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <br><br>
+                <input class="button" type="submit" value="Submit" />
+            </div>
+        </div>
+    </div>
 </form>
 <%- include('../layout/footer') %>

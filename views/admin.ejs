@@ -3,64 +3,76 @@
     <h3><%= locals.message %></h3>
 <% } %>
 <% if (locals.users && locals.users.length > 0) { %>
-    <table style="border: 1px solid black; border-spacing: 15px;">
-        <tr>
-            <th>
-                Username
-            </th>
-            <th>
-                Nama Depan
-            </th>
-            <th>
-                Nama Belakang
-            </th>
-            <th>
-                Email
-            </th>
-            <th>
-                No Telp
-            </th>
-            <th>
-                Alamat
-            </th>
-            <th>
-                User Type
-            </th>
-            <th>
-                Action
-            </th>
-        </tr>
-        <% for (i in users) { %>
-        <tr>
-            <td>
-                <%= users[i].username %>
-            </td>
-            <td>
-                <%= users[i].nama_depan %>
-            </td>
-            <td>
-                <%= users[i].nama_belakang %>
-            </td>
-            <td>
-                <%= users[i].email %>
-            </td>
-            <td>
-                <%= users[i].no_telp %>
-            </td>
-            <td>
-                <%= users[i].alamat %>
-            </td>
-            <td>
-                <%= users[i].user_type %>
-            </td>
-            <td>
-                <a href="<%= locals.current_path_relative %>/<%= users[i].user_id %>">Edit</a>
-                 | 
-                <a href="<%= locals.current_path_relative %>/hapus/<%= users[i].user_id %>">Hapus</a>
-            </td>
-        </tr>        
-        <% } %>
-        </ul>
-    </table>
+    <div class="manage">
+        <h1>
+            Manage User / Staff
+        </h1>
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">
+                    Username
+                </th>
+                <th scope="col">
+                    Nama Depan
+                </th>
+                <th scope="col">
+                    Nama Belakang
+                </th>
+                <th scope="col">
+                    Email
+                </th>
+                <th scope="col">
+                    No Telp
+                </th>
+                <th scope="col">
+                    Alamat
+                </th>
+                <th scope="col">
+                    User Type
+                </th>
+                <th scope="col">
+                    Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for (i in users) { %>
+                <tr>
+                    <th scope=row>
+                        <%= users[i].username %>
+                    </th>
+                    <td>
+                        <%= users[i].nama_depan %>
+                    </td>
+                    <td>
+                        <%= users[i].nama_belakang %>
+                    </td>
+                    <td>
+                        <%= users[i].email %>
+                    </td>
+                    <td>
+                        <%= users[i].no_telp %>
+                    </td>
+                    <td>
+                        <%= users[i].alamat %>
+                    </td>
+                    <td>
+                        <%= users[i].user_type %>
+                    </td>
+                    <td>
+                        <a href="<%= locals.current_path_relative %>/<%= users[i].user_id %>"><button><i data-feather="edit"></i></button></a>
+                         | 
+                        <a href="<%= locals.current_path_relative %>/hapus/<%= users[i].user_id %>"><button><i data-feather="trash-2"></i></button></a>
+                    </td>
+                </tr>        
+                <% } %>
+            </tbody>
+          </table>
+    </div>
+<% } else { %>
+<br>
+<br>
+<h2>Tidak ada pengguna selain anda...</h2>
 <% } %>
 <%- include('layout/footer') %>

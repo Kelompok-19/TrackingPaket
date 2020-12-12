@@ -1,28 +1,70 @@
 <%- include('../layout/header', {title : "Cek Ongkir"}) %>
-<h2>Detail pesanan yang akan diambil</h2>
+<br>
+<br>
 <form id="pickup" name="pickup" method="post" action="<%= locals.current_path %>">
-    <label for="pengirim">Nama Pengirim : </label>
-    <input class="text" name="pengirim" type="text" value="<%= request.nama_pengirim %>" required /><br>
-    <label for="no_telp_pengirim">Nomor Pengirim : </label>
-    <input class="text" name="no_telp_pengirim" type="text" value="<%= request.no_telp_pengirim %>" required /><br>
-    <label for="alamat_pickup">Alamat Pickup : </label>
-    <input class="text" name="alamat_pengirim" type="text" value="<%= request.alamat_pengirim %>" required /><br>
-    <label for="penerima">Nama Pengirim : </label>
-    <input class="text" name="penerima" type="text" value="<%= request.nama_penerima %>" required /><br>
-    <label for="no_telp_penerima">Nomor Penerima : </label>
-    <input class="text" name="no_telp_penerima" type="text" value="<%= request.no_telp_penerima %>" required /><br>
-    <label for="alamat_tujuan">Alamat Tujuan : </label>
-    <input class="text" name="alamat_penerima" type="text" value="<%= request.alamat_penerima %>" required /><br>
-    <label for="berat">Berat : </label>
-    <input class="text" name="berat" type="number" min="1" value="<%= request.berat %>" required /><br>
-    <label for="biaya">biaya : </label>
-    <input class="text" name="biaya" type="number" min="9000" value="<%= paket.biaya %>" required /><br>
-    <select name="tipe_status">
-        <% for (i in status_codes) { %>
-            <option value="<%= status_codes[i].status_id %>" <% if (status_codes[i].status_id == paket.status) { %>selected<% } %>><%= status_codes[i].status_msg %></option>
-        <% } %>
-    </select>
-    <input class="button" type="submit" value="Submit" />
+    <div class="data container">
+        <h2>Detail pesanan yang akan diambil</h2>
+        <div class="row">
+            <div class="col-sm">
+                <label for="pengirim">Nama Pengirim : </label><br>
+                <input class="text" name="pengirim" type="text" value="<%= request.nama_pengirim %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="no_telp_pengirim">Nomor Pengirim : </label><br>
+                <input class="text" name="no_telp_pengirim" type="text" value="<%= request.no_telp_pengirim %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="alamat_pickup">Alamat Pickup : </label><br>
+                <input class="text" name="alamat_pengirim" type="text" value="<%= request.alamat_pengirim %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="penerima">Nama Pengirim : </label><br>
+                <input class="text" name="penerima" type="text" value="<%= request.nama_penerima %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="no_telp_penerima">Nomor Penerima : </label><br>
+                <input class="text" name="no_telp_penerima" type="text" value="<%= request.no_telp_penerima %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="alamat_tujuan">Alamat Tujuan : </label><br>
+                <input class="text" name="alamat_penerima" type="text" value="<%= request.alamat_penerima %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="berat">Berat : </label><br>
+                <input class="text" name="berat" type="number" min="1" value="<%= request.berat %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="biaya">Biaya : </label><br>
+                <input class="text" name="biaya" type="number" min="9000" value="<%= paket.biaya %>" required /><br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
+                <label for="tipe_status">Status : </label><br>
+                <select name="tipe_status">
+                    <% for (i in status_codes) { %>
+                        <option value="<%= status_codes[i].status_id %>" <% if (status_codes[i].status_id == paket.status) { %>selected<% } %>><%= status_codes[i].status_msg %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+        <br>
+        <input class="button" type="submit" value="Submit" />
+        </div>
     <% if (locals.message) { %>
         <h2><%= message %></h2>
     <% } %>

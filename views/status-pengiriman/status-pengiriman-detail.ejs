@@ -1,6 +1,58 @@
 <%- include('../layout/header', {title : "Cek Ongkir"}) %>
-NO RESI : <%= paket.no_resi %><br>
-NAMA PENGIRIM :<%= request.nama_pengirim %><br>
-NO TELP PENERIMA : <%= request.no_telp_penerima %><br>
-STATUS : <%= status %><br>
+<br>
+<br>
+<div class="waiting">
+    <h1>
+        Pesanan Anda
+    </h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Nomor Resi : </th>
+                <td><%= paket.no_resi %></td>             
+            </tr>
+            <tr>
+                <th scope="row">Status : </th>
+                <td><%= status %></td>             
+            </tr>
+            <tr>
+                <th scope="row">Waktu Permintaan : </th>
+                <td><%= request.createdAt %></td>             
+            </tr>
+            <tr>
+                <th scope="row">Waktu Proses : </th>
+                <td><%= paket.createdAt %></td>             
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="waiting">
+    <h1>
+        Catatan
+    </h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tipe Kejadian</th>
+                <th scope="col">Pesan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (i in logs) { %>
+            <tr>
+                <th scope="row"><%= (parseInt(i) + 1) %></th>
+                <td><%= logs[i].log_type_name %></td>
+                <td><%= logs[i].log_message_prep + logs[i].log_msg %></td>       
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
 <%- include('../layout/footer') %>

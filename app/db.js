@@ -42,13 +42,17 @@ module.exports.first_init = function(dbSettings, admin_config, heroku = false, v
             const statuscode = require('./models/statuscode');
     
             require('./models/paket');
-            require('./models/request')
-    
+            const logtype = require('./models/paket-logtype');
+            require('./models/paket-log');
+            require('./models/request');
+
             sequelize.sync({ force: true }).then((sequelize) => {
                 usertype.initialize();
                 user.createAdmin(admin_config.username, admin_config.password, admin_config.email, admin_config.front_name, admin_config.last_name);
                 statuscode.initialize();
-    
+
+                logtype.initialize();
+
                 console.log('Success initializing database!')
             });
             
@@ -64,12 +68,16 @@ module.exports.first_init = function(dbSettings, admin_config, heroku = false, v
         const statuscode = require('./models/statuscode');
 
         require('./models/paket');
-        require('./models/request')
+        const logtype = require('./models/paket-logtype');
+        require('./models/paket-log');
+        require('./models/request');
 
         sequelize.sync({ force: true }).then((sequelize) => {
             usertype.initialize();
             user.createAdmin(admin_config.username, admin_config.password, admin_config.email, admin_config.front_name, admin_config.last_name);
             statuscode.initialize();
+
+            logtype.initialize();
 
             console.log('Success initializing database!')
         });
@@ -92,6 +100,8 @@ module.exports.init = function(dbSettings){
     require('./models/usertype');
     require('./models/user');
     require('./models/paket');
+    require('./models/paket-logtype');
+    require('./models/paket-log');
     require('./models/request');
 }
 
