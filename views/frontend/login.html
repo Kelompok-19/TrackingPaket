@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" style="min-height: 100%;">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -63,34 +63,27 @@
 
 </head>
 
-<body style="background: rgb(33, 31, 43, 0.8); min-height: 100%; overflow: hidden;">
+<body style="background: rgb(33, 31, 43, 0.8);">
     <div>
-        <img src="img/kurir.jpg" alt="" style="min-width: 100vw; min-height: 100vh; opacity: 0.4; position: fixed; right: -35%;">
-        <form id="login" name="login" method="post" action="<% locals.current_path %>">
-            <div class="login-form">
-                <h2 style="color:  rgb(230, 210, 213);">Sign in</h2>
-                <hr>
-                <div class="username">
-                    <i class="fas fa-user" style="padding-right: 0.3cm;"></i>
-                    <input type="text" name="username" id="login-username" placeholder="Username" required>
-                </div>
-                <div class="password" style="padding-top: 0.4cm; padding-bottom: 0.4cm;">
-                    <i class="fas fa-lock" style="padding-right: 0.3cm;"></i>
-                    <input type="password" name="password" id="login-password" placeholder="Password" required>
-                </div>
-                <% if (locals.message) { %>
-                    <i class="fas fa-exclamation-triangle" id="mark" style="padding-left: 0.2cm; color: yellow;">
-                    <span id="warn-pw"><%= message %></span>
-                    </i><br><br>
-                <% } %>
-                <a href="./"><button style="margin-right: 0.5cm;" type="button"><b>Back</b></button></a>
-                <button type="submit"><b>Login</b></button>
-                <p style="font-size: small; padding-top: 0.3cm;">Don't have an account?
-                    <a href="./register"><span><button class="sign-up" style="width: fit-content;" type="button"><b> Sign Up</b></button></span></a>
-                </p>
-            </div>
-            <form>
-    </div>    
+        <img src="img/kurir.jpg" alt="" style="height: 17cm; opacity: 0.4;">
+    </div>
+
+    <div class="login-form">
+        <h2 style="color:  rgb(230, 210, 213);">Sign in</h2>
+        <hr>
+        <div class="username">
+            <i class="fas fa-user" style="padding-right: 0.3cm;"></i>
+            <input type="text" name="username" id="login-username" placeholder="Username">
+        </div>
+        <div class="password" style="padding-top: 0.4cm; padding-bottom: 0.4cm;">
+            <i class="fas fa-lock" style="padding-right: 0.3cm;"></i>
+            <input type="password" name="pass" id="login-password" placeholder="Password">
+        </div>
+        <button style="margin-right: 0.5cm;"><b>Back</b></button>
+        <button><b>Login</b></button>
+        <p style="font-size: small; padding-top: 0.3cm;">Don't have an account?<span> <button class="sign-up"
+                    style="width: fit-content;"><b> Sign Up</b></button></span></p>
+    </div>
 </body>
 
 </html>

@@ -1,22 +1,57 @@
 <%- include('layout/header', {title : "Cek Ongkir"}) %>
-    <form id="pickup" name="pickup" method="post" action="/pickup">
-        <label for="pengirim">Nama Pengirim : </label>
-        <input class="text" name="pengirim" type="text" value="<%= locals.user['nama_depan'] + ' ' + locals.user['nama_belakang'] %>" required /><br>
-        <label for="no_telp_pengirim">Nomor Pengirim : </label>
-        <input class="text" name="no_telp_pengirim" type="text" value="<%= locals.user['no_telp'] %>" required /><br>
-        <label for="alamat_pickup">Alamat Pickup : </label>
-        <input class="text" name="alamat_pengirim" type="text" value="<%= locals.user['alamat'] %>" required /><br>
-        <label for="penerima">Nama Pengirim : </label>
-        <input class="text" name="penerima" type="text" required /><br>
-        <label for="no_telp_penerima">Nomor Penerima : </label>
-        <input class="text" name="no_telp_penerima" type="text" required /><br>
-        <label for="alamat_tujuan">Alamat Tujuan : </label>
-        <input class="text" name="alamat_penerima" type="text" required /><br>
-        <label for="berat">Berat : </label>
-        <input class="text" name="berat" type="number" min="1" value="1" required /><br>
-        <input class="button" type="submit" value="Submit" />
-        <% if (locals.message) { %>
-            <h2><%= message %></h2>
-        <% } %>
-    </form>
+<br>
+<br>
+<form id="pickup" name="pickup" method="post" action="/pickup">
+    <div class="data container">
+        <h2>Detail pesanan yang akan diambil</h2>
+        <div class="row">
+            <div class="col-sm">
+            <label for="pengirim">Nama Pengirim : </label><br>
+            <input class="text" name="pengirim" type="text" value="<%= locals.user['nama_depan'] + ' ' + locals.user['nama_belakang'] %>" required /><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label for="no_telp_pengirim">Nomor Pengirim : </label><br>
+            <input class="text" name="no_telp_pengirim" type="text" value="<%= locals.user['no_telp'] %>" required /><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label for="alamat_pickup">Alamat Pickup : </label><br>
+            <input class="text" name="alamat_pengirim" type="text" value="<%= locals.user['alamat'] %>" required /><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label for="penerima">Nama Pengirim : </label><br>
+            <input class="text" name="penerima" type="text" required /><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label for="no_telp_penerima">Nomor Penerima : </label><br>
+            <input class="text" name="no_telp_penerima" type="text" required /><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label for="alamat_tujuan">Alamat Tujuan : </label><br>
+            <input class="text" name="alamat_penerima" type="text" required /><br>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <label for="berat">Berat : </label><br>
+            <input class="text" name="berat" type="number" min="1" value="1" required /><br>
+        </div>
+    </div>
+    <br>
+    <br>
+    <input class="button" type="submit" value="Submit" />
+    <% if (locals.message) { %>
+        <h2><%= message %></h2>
+    <% } %>
+    </div>
+</form>
 <%- include('layout/footer') %>
