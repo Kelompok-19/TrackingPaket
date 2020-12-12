@@ -96,7 +96,7 @@ if(argv._.includes('initdb')){
 
         setting.dbOptions = {};
 
-        setting.dbOptions.dbName = process.env.DATABASE_NAME;
+        setting.dbOptions.dbName = db_connection_string.path.replace('/','');
         setting.dbOptions.host = db_connection_string.hostname;
         setting.dbOptions.port = db_connection_string.port;
         credential = db_connection_string.auth.split(':');
@@ -113,7 +113,7 @@ if(argv._.includes('initdb')){
         setting = JSON.parse(setting);
     }
 
-    db.first_init(setting.dbOptions, admin_config, (argv.v));
+    db.first_init(setting.dbOptions, admin_config, (argv.heroku), (argv.v));
 }
 
 if(argv._.includes('run')){
@@ -125,7 +125,7 @@ if(argv._.includes('run')){
 
         setting.dbOptions = {};
 
-        setting.dbOptions.dbName = process.env.DATABASE_NAME;
+        setting.dbOptions.dbName = db_connection_string.path.replace('/','');
         setting.dbOptions.host = db_connection_string.hostname;
         setting.dbOptions.port = db_connection_string.port;
         credential = db_connection_string.auth.split(':');
