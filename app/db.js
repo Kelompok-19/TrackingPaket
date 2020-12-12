@@ -9,6 +9,7 @@ module.exports.first_init = function(dbSettings, admin_config, verbose = false){
         password = dbSettings.password,
         host = dbSettings.host,
         port = dbSettings.port;
+        defaultDb = dbSettings.defaultDb;
 
     let createConnectionString = 'postgres://' + username + ':' + password + '@' + host + ':' + port + '/' + dbName;
 
@@ -17,7 +18,7 @@ module.exports.first_init = function(dbSettings, admin_config, verbose = false){
         host: host,
         port: port,
         password: password,
-        database: 'postgres',
+        database: defaultDb,
     });
 
     pool.query('CREATE DATABASE ' + dbName, (err, res) =>{
