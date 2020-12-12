@@ -153,17 +153,23 @@ if(argv._.includes('run')){
 
     require('./app/config/passport')(passport);
 
+    const store = new SequelizeStore({
+        db: db.db(),
+    });
+
     app = express();
     app.set('view engine', 'ejs');
     app.use(express.static(setting.static_files_dir));
     app.use(session({
         secret: setting.secret,
         resave: false,
-        store: new SequelizeStore({
-            db: db.db(),
-        }),
+        store: store,
         saveUninitialized: false
     }));
+
+    store.sync();
+
+
 
     app.use(passport.initialize());
     app.use(passport.session());
