@@ -76,7 +76,11 @@
             </tbody>
         </table>
     </div>
-<% } %>
+<% } else { %>
+<br>
+<br>
+<h2>Tidak ada baru pesanan saat ini...</h2>
+<% } >
 <% if (locals.paketlist && locals.paketlist.length > 0) { %>
 <div class="sending">
     <h1>
@@ -125,5 +129,9 @@
     </table>
 </div>
 </div>
-<% } %>
+<% } else { %>
+    <br>
+    <br>
+    <h2>Tidak ada pesanan yang telah terambil untuk sekarang...</h2>
+<% } >
 <%- include('layout/footer') %>
