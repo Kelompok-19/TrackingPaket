@@ -88,13 +88,13 @@ if(argv._.includes('initdb')){
         last_name: prompt('Admin last name: '),
     };
 
-    let setting = null;
+    let setting = {};
 
     if(argv.heroku){
         const url = require('url');
         db_connection_string = url.parse(process.env.DATABASE_URL);
 
-        setting.dbOptions = null;
+        setting.dbOptions = {};
 
         setting.dbOptions.dbName = process.env.DATABASE_NAME;
         setting.dbOptions.host = db_connection_string.hostname;
@@ -113,18 +113,17 @@ if(argv._.includes('initdb')){
         setting = JSON.parse(setting);
     }
 
-
     db.first_init(setting.dbOptions, admin_config, (argv.v));
 }
 
 if(argv._.includes('run')){
-    let setting = null;
+    let setting = {};
 
     if(argv.heroku){
         const url = require('url');
         db_connection_string = url.parse(process.env.DATABASE_URL);
 
-        setting.dbOptions = null;
+        setting.dbOptions = {};
 
         setting.dbOptions.dbName = process.env.DATABASE_NAME;
         setting.dbOptions.host = db_connection_string.hostname;
