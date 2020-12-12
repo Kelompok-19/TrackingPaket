@@ -11,6 +11,8 @@
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    
+    
     <style>
         .register-form {
             text-align: center;
@@ -40,7 +42,8 @@
             width: 7cm;
         }
 
-        i,p {
+        i,
+        p {
             color: rgb(196, 152, 158);
         }
 
@@ -50,27 +53,48 @@
             background-color: rgb(183, 86, 99);
             border: none;
             border-radius: 10px;
-            color: rgb(114, 45, 48);
+            color: rgb(250, 218, 218);
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         }
 
         button.sign-up {
             border: none;
             background-color: rgb(159, 65, 69);
-            color: rgb(196, 152, 158);
-        }        
+            color: rgb(224, 176, 183);
+        }
+        
+        .input-group ::placeholder {
+            color: rgb(235, 173, 173);
+        }
+
+        .input-group input {
+            background-color: rgb(159, 65, 69);
+            border-radius: 10px;
+            border: solid 2px rgb(183, 86, 99);
+            height: 1cm;
+            color: white;
+        }
+
+        .input-group input:focus {
+            background-color: rgb(159, 65, 69);
+            border-radius: 10px;
+            border: solid 2px rgb(255, 185, 194);
+            height: 1cm;
+            color: white;
+        }
+        
     </style>
     <script>
-        function validate(){
+        function validate() {
             var pass = document.getElementById("register-password").value;
             var passValidate = document.getElementById("register-password-validate").value;
             var load = document.getElementById("pass-validator");
             var warning = document.getElementById("mark");
-            if(pass != passValidate){  
-                load.style.paddingLeft = '0.8cm';
+            if (pass != passValidate) {
+                load.style.paddingLeft = '0.0cm';
                 mark.style.display = "inline-block"
             }
-            else{
+            else {
                 load.style.paddingLeft = '0cm';
                 mark.style.display = "none"
             }
@@ -86,31 +110,38 @@
     <div class="register-form">
         <h2 style="color:  rgb(230, 210, 213);">Sign up</h2>
         <hr>
+        <div class="input-group" style="padding-bottom: 0.4cm;">
+            <input type="text" class="form-control" placeholder="First name *" required style="margin-left: 1cm;">
+            <input type="text" class="form-control" placeholder="Last name" style="margin-right: 1cm;">
+        </div>
+
         <div class="email">
             <i class="fas fa-envelope" style="padding-right: 0.3cm;"></i>
-            <input type="text" name="email" id="register-username" placeholder="Email">
+            <input type="text" name="email" id="register-username" placeholder="Email *" required>
         </div>
         <div class="username" style=" padding-top: 0.4cm;">
             <i class="fas fa-user" style="padding-right: 0.3cm;"></i>
-            <input type="text" name="username" id="register-username" placeholder="Username">
+            <input type="text" name="username" id="register-username" placeholder="Username *" required>
         </div>
         <div class="password" style="padding-top: 0.4cm;">
             <i class="fas fa-lock" style="padding-right: 0.3cm;"></i>
-            <input type="password" name="pass" id="register-password" placeholder="Password">
+            <input type="password" name="pass" id="register-password" placeholder="Password *" required>
         </div>
-        <div class="password" id = "pass-validator" style="padding-top: 0.4cm; padding-bottom: 0.4cm; padding-left: 0cm;">
+        <div class="password" id="pass-validator" style="padding-top: 0.4cm; padding-bottom: 0.4cm; padding-left: 0cm;">
             <i class="fas fa-lock" style="padding-right: 0.3cm;"></i>
-            <input type="password" name="passValidation" id="register-password-validate" placeholder="Confirm Password">
-            <i class="fas fa-exclamation-triangle" id="mark" style="padding-left: 0.2cm; color: yellow; display: none;"></i>
+            <input type="password" name="passValidation" id="register-password-validate" placeholder="Confirm Password *" required>
+            <i class="fas fa-exclamation-triangle" id="mark"
+                style="padding-left: 0.2cm; color: yellow; display: none;">Password didn't match</i>
         </div>
         <div class="custom-control custom-checkbox" style="padding-bottom: 0.4cm;">
             <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-            <label class="custom-control-label" for="defaultUnchecked"><b style="color: rgb(196, 152, 158)">Accept Terms and Agreements</b></label>
+            <label class="custom-control-label" for="defaultUnchecked"><b style="color: rgb(196, 152, 158)">Accept Terms
+                    and Agreements</b></label>
         </div>
         <button style="margin-right: 0.5cm;"><b>Back</b></button>
         <button><b onclick="validate()">Register</b></button>
         <p style="font-size: small; padding-top: 0.3cm;">Already have an account?<span> <button class="sign-up"
-        style="width: fit-content;"><b> Login</b></button></span></p>
+                    style="width: fit-content;"><b> Login</b></button></span></p>
     </div>
 </body>
 
