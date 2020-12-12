@@ -55,6 +55,9 @@ module.exports = function(passport){
                         nama_depan: req.body.nama_depan,
                         nama_belakang: req.body.nama_belakang,
                      }).then((user) => {
+                        req.logIn(user, (err) => {
+                            if (err) console.log(err);
+                        });
                         return done(null, user);
                      }, (reject) => {
                         return done(null, false);
