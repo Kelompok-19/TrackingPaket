@@ -1,1 +1,1 @@
-web: node app.js run
+web: node app.js run --heroku
