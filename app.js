@@ -1,5 +1,3 @@
-const { SIGINT } = require('constants');
-const { check } = require('yargs');
 const yargs = require('yargs');
 const db = require('./app/db');
 
@@ -25,9 +23,16 @@ const argv = yargs
         'verbose': {
             alias: 'v',
             description: 'Enable verbose error printing'
+        },
+        'heroku' : {
+            description: 'Get setting from ENVVAR for use in a heroku environment'
         }
     })
-    .command('run', 'Run webapp')
+    .command('run', 'Run webapp', {
+        'heroku' : {
+            description: 'Get setting from ENVVAR for use in a heroku environment'
+        }
+    })
     .help()
     .alias('help', 'h')
     .demandCommand()
@@ -43,6 +48,7 @@ if(argv._.includes('init')){
             "port": 5433,
             "username": "INSERT_USERNAME",
             "password": "INSERT_PASSWORD",
+            "defaultDb": "postgres",
         },
         "secret": "SESSION_SECRET_KEY_HERE",
         "static_files_dir": "./static/",
@@ -82,18 +88,59 @@ if(argv._.includes('initdb')){
         last_name: prompt('Admin last name: '),
     };
 
-    let fs = require('fs');
+    let setting = {};
 
-    let setting = fs.readFileSync('settings.json');
-    setting = JSON.parse(setting);
+    if(argv.heroku){
+        const url = require('url');
+        db_connection_string = url.parse(process.env.DATABASE_URL);
 
-    db.first_init(setting.dbOptions, admin_config, (argv.v));
+        setting.dbOptions = {};
+
+        setting.dbOptions.dbName = db_connection_string.path.replace('/','');
+        setting.dbOptions.host = db_connection_string.hostname;
+        setting.dbOptions.port = db_connection_string.port;
+        credential = db_connection_string.auth.split(':');
+        setting.dbOptions.username = credential[0];
+        setting.dbOptions.password = credential[1];
+        setting.dbOptions.defaultDb = db_connection_string.path.replace('/','');
+
+        setting.static_files_dir = process.env.STATIC_DIR;
+        setting.port = process.env.PORT || 80;
+        setting.secret = process.env.SECRET;
+    } else {
+        const fs = require('fs');
+        setting = fs.readFileSync('settings.json');
+        setting = JSON.parse(setting);
+    }
+
+    db.first_init(setting.dbOptions, admin_config, (argv.heroku), (argv.v));
 }
 
 if(argv._.includes('run')){
-    const fs = require('fs');
-    let setting = fs.readFileSync('settings.json');
-    setting = JSON.parse(setting);
+    let setting = {};
+
+    if(argv.heroku){
+        const url = require('url');
+        db_connection_string = url.parse(process.env.DATABASE_URL);
+
+        setting.dbOptions = {};
+
+        setting.dbOptions.dbName = db_connection_string.path.replace('/','');
+        setting.dbOptions.host = db_connection_string.hostname;
+        setting.dbOptions.port = db_connection_string.port;
+        credential = db_connection_string.auth.split(':');
+        setting.dbOptions.username = credential[0];
+        setting.dbOptions.password = credential[1];
+        setting.dbOptions.defaultDb = db_connection_string.path.replace('/','');
+
+        setting.static_files_dir = process.env.STATIC_DIR;
+        setting.port = process.env.PORT || 80;
+        setting.secret = process.env.SECRET;
+    } else {
+        const fs = require('fs');
+        setting = fs.readFileSync('settings.json');
+        setting = JSON.parse(setting);
+    }
 
     db.init(setting.dbOptions);
 

@@ -28,6 +28,7 @@
     "pg": "^8.5.1",
     "prompt-sync": "^4.2.0",
     "sequelize": "^6.3.5",
+    "url": "^0.11.0",
     "yargs": "^16.2.0"
   },
   "devDependencies": {
