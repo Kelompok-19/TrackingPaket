@@ -1,5 +1,7 @@
 const bcrypt = require('bcryptjs');
-const LocalStrategy = require('passport-local').Strategy;;
+const LocalStrategy = require('passport-local').Strategy;
+
+const { Op } = require('sequelize');
 
 const User = require('../models/user');
 
@@ -34,14 +36,16 @@ module.exports = function(passport){
             passwordField: "password",
             passReqToCallback: true
         }, (req, username, password, done) => {
-            User.findOne({ where : { username: username } }).then((user) => {
+            if (!req.body.email || !req.body.nama_depan){
+                return done(null, false, { message: "Data kurang lengkap." });
+            }
+            User.findOne({ 
+                where : {
+                    [Op.or]: [{username: username}, {email: req.body.email}],
+                }}).then((user) => {
                 if (user) {
-                    return done(null, false, { message: "Username sudah terdaftar" });
+                    return done(null, false, { message: "Username atau Email sudah terdaftar" });
                 } else {
-                    if (!req.body.email || !req.body.nama_depan){
-                        return done(null, false, { message: "Data kurang lengkap." });
-                    }
-
                     var passwordHash = generateHash(password);
 
                     User.create({ 
