@@ -84,43 +84,6 @@
         }
         
     </style>
-    <script>
-        function validate() {
-            var firstname = document.getElementById("first-name").value;
-            var email = document.getElementById("register-email").value;
-            var pass = document.getElementById("register-password").value;
-            var passValidate = document.getElementById("register-password-validate").value;
-            var load = document.getElementById("pass-validator");
-            var warning = document.getElementById("mark");
-            var warnPW = document.getElementById("warn-pw");
-            var warnempty = document.getElementById("warn-empty");
-            var warntos = document.getElementById("warn-tos");
-
-            warning.style.display = "none";
-            warnPW.style.display = "none";
-            warnempty.style.display = "none";
-            warntos.style.display = "none";
-
-            if(pass == "" || firstname == "" || email == ""){
-                warning.style.display = "inline-block";
-                warnempty.style.display = "inline-block";
-            }
-            else if (pass != passValidate) {
-                load.style.paddingLeft = '0.0cm';
-                warning.style.display = "inline-block";
-                warnPW.style.display = "inline-block";
-            }
-            else if (!document.getElementById("tos").checked) {
-                warning.style.display = "inline-block";
-                warntos.style.display = "inline-block";
-            }
-            else {
-                load.style.paddingLeft = '0cm';
-
-                document.getElementById("register").submit();
-            }
-        }
-    </script>
 </head>
 
 <body style="background: rgb(33, 31, 43, 0.8); min-height: 100%; overflow: hidden;">
@@ -166,7 +129,7 @@
                             and Agreements</b></label>
                 </div>
                 <a href="./"><button style="margin-right: 0.5cm;" type="button"><b>Back</b></button></a>
-                <button type="button"><b onclick="validate()">Register</b></button>
+                <button id="registerbutton" type="button"><b>Register</b></button>
                 <p style="font-size: small; padding-top: 0.3cm;">Already have an account?
                     <span>
                         <a href="./login"><button class="sign-up" type="button" style="width: fit-content;"><b> Login</b></button></a>
@@ -174,7 +137,46 @@
                 </p>
             </div>
         </form>
-    </div>    
+    </div>
+    <script>
+        function validate() {
+            var firstname = document.getElementById("first-name").value;
+            var email = document.getElementById("register-email").value;
+            var pass = document.getElementById("register-password").value;
+            var passValidate = document.getElementById("register-password-validate").value;
+            var load = document.getElementById("pass-validator");
+            var warning = document.getElementById("mark");
+            var warnPW = document.getElementById("warn-pw");
+            var warnempty = document.getElementById("warn-empty");
+            var warntos = document.getElementById("warn-tos");
+
+            warning.style.display = "none";
+            warnPW.style.display = "none";
+            warnempty.style.display = "none";
+            warntos.style.display = "none";
+
+            if(pass == "" || firstname == "" || email == ""){
+                warning.style.display = "inline-block";
+                warnempty.style.display = "inline-block";
+            }
+            else if (pass != passValidate) {
+                load.style.paddingLeft = '0.0cm';
+                warning.style.display = "inline-block";
+                warnPW.style.display = "inline-block";
+            }
+            else if (!document.getElementById("tos").checked) {
+                warning.style.display = "inline-block";
+                warntos.style.display = "inline-block";
+            }
+            else {
+                load.style.paddingLeft = '0cm';
+
+                document.getElementById("register").submit();
+            }
+        }
+
+        document.getElementById("registerbutton").addEventListener("click", validate);
+    </script>
 </body>
 
 </html>
