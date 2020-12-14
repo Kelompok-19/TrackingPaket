@@ -1,61 +1,63 @@
-<%- include('layout/header', {title : "Profile"}) %>
-<% if (locals.message) { %>
-    <h3><%= locals.message %></h3>
-<% } %>
-<br><br>
-<form id="profile" name="profile" method="post" action="<%= locals.current_path %>">
-    <div class="data container">
-        <div class="row">
-        <div class="uname col-sm">
-            <label for="uname">Username</label>
-            <br>
-            <input type="text" name="username" value="<%= user.username %>" style="margin-left: 0.5cm;" disabled>
-        </div>
-        </div>
-        <div class="row">
-        <div class="email col-sm">
-            <label for="email">E-Mail</label>
-            <br>
-            <input type="text" name="email" value="<%= user.email %>" style="margin-left: 0.5cm;" disabled>
-        </div>
-        </div>
-        <hr>
-        <h2>Data Pribadi</h2>
-        <hr>
-        <div class="row" style="padding-bottom: 0.4cm;">
-            <div class="telp col-sm">
-                <label for="nama_depan">Nama Depan</label>
-                <br>
-                <input type="text" name="nama_depan" value="<%= user.nama_depan %>">
-            </div>
-        </div>
-        <div class="row" style="padding-bottom: 0.4cm;">
-            <div class="telp col-sm">
-            <label for="nama_belakang">Nama Belakang</label>
-            <br>
-            <input type="text" name="nama_belakang" value="<%= user.nama_belakang %>">
-            </div>
-        </div>
-        <div class="row">
-        <div class="alamat col-sm" style="padding-top: 0.4cm; padding-bottom: 0.4cm;">
-            <label for="alamat">Alamat</label>
-            <br>
-            <textarea name="alamat" rows="3" cols="30"><%= user.alamat %></textarea>
-        </div>
-        </div>
-        <div class="row" style="padding-bottom: 0.4cm;">
-        <div class="telp col-sm">
-            <label for="no_telp">Nomor Telepon</label>
-            <br>
-            <input type="text" name="no_telp" value="<%= user.no_telp %>">
-        </div>
-        </div>    
-        <div class="save" style="padding-top: 0.2cm;">
-        <button style="border: solid 2px; border-radius: 3px;">
-            <i data-feather="save"></i>
-            <b>Simpan Perubahan</b>
-        </button>
-        </div>
-    </div>
-</form>
-<%- include('layout/footer') %>
+<%- include('layout/header', {title : "Profile" }) %>
+    <% if (locals.message) { %>
+        <h3>
+            <%= locals.message %>
+        </h3>
+        <% } %>
+            <br><br>
+            <form id="profile" name="profile" method="post" action="<%= locals.current_path %>">
+                <div class="data container">
+                    <div class="row">
+                        <div class="uname col-sm">
+                            <label for="uname">Username</label>
+                            <br>
+                            <input type="text" name="username" value="<%= user.username %>" style="margin-left: 0.5cm;"
+                                disabled>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="email col-sm">
+                            <label for="email">E-mail</label>
+                            <br>
+                            <input type="text" name="email" value="<%= user.email %>" style="margin-left: 0.5cm;"
+                                disabled>
+                        </div>
+                    </div>
+                    <hr>
+                    <h2>Data Pribadi</h2>
+                    <hr>
+                    <div class="row" style="padding-bottom: 0.4cm; padding-left: 0.37cm;">
+                        <div class="telp col-">
+                            <label for="nama_depan">Nama Depan</label>
+                            <br>
+                            <input type="text" name="nama_depan" value="<%= user.nama_depan %>">
+                        </div>
+                        <div class="telp col-sm">
+                            <label for="nama_belakang">Nama Belakang</label>
+                            <br>
+                            <input type="text" name="nama_belakang" value="<%= user.nama_belakang %>">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="alamat col-sm" style=" padding-bottom: 0.4cm;">
+                            <label for="alamat">Alamat</label>
+                            <br>
+                            <textarea name="alamat" rows="3" cols="30"><%= user.alamat %></textarea>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-bottom: 0.4cm;">
+                        <div class="telp col-sm">
+                            <label for="no_telp">Nomor Telepon</label>
+                            <br>
+                            <input type="text" name="no_telp" value="<%= user.no_telp %>">
+                        </div>
+                    </div>
+                    <div class="save" style="padding-top: 0.2cm;">
+                        <button style="border: solid 2px; border-radius: 3px;">
+                            <i data-feather="save"></i>
+                            <b>Simpan Perubahan</b>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <%- include('layout/footer') %>

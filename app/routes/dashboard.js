@@ -206,7 +206,11 @@ module.exports.getlog = (req, res) => {
                 raw: true,
             });
 
-            res.render('dashboard/dashboard-log', { logtypes: logtypes });
+            statuscode = await StatusCode.findAll({
+                raw: true,
+            });
+
+            res.render('dashboard/dashboard-log', { logtypes: logtypes, statuscode: statuscode, status_paket: paket.status });
         }
     }
     getlog();
@@ -237,6 +241,15 @@ module.exports.postlog = (req, res) => {
                 paket_id: paket_id,
                 log_type: type_id,
                 log_msg: message,
+            });
+
+            await Paket.update({
+                status: req.body.status_code,
+            }, {
+                where:
+                {
+                    paket_id: paket_id,
+                }
             })
 
             res.redirect('/dashboard');

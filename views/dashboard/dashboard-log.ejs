@@ -16,8 +16,18 @@
         </div>
         <div class="row">
             <div class="col-sm">
+                <label for="status_code">Kode Status : </label><br>
+                <select name="status_code">
+                    <% for (i in statuscode) { %>
+                        <option value="<%= statuscode[i].status_id %>" <% if(statuscode[i].status_id == status_paket) { %>selected<% } %>><%= statuscode[i].status_msg %></option>
+                    <% } %>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm">
                 <label for="message">Pesan : </label><br>
-                <input class="text" name="message" type="text" required /><br>
+                <textarea class="text" name="message" type="text" ></textarea>
             </div>
         </div>        
         <br>
