@@ -28,7 +28,7 @@ module.exports.post = (req, res, next) => {
             berat: berat,
         });
 
-        res.render('request-pickup');
+        res.render('request-pickup', { message: "Berhasil merequest! Cek halaman cek-resi untuk melihat status request anda."});
     }    
 }
 

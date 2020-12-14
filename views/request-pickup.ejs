@@ -1,5 +1,8 @@
 <%- include('layout/header', {title : "Jan-Express" }) %>
     <br>
+    <% if(locals.message) { %>
+        <h2 style="margin-left: 30px;"><%= locals.message %></h2>
+    <% } %>
     <br>
     <form id="pickup" name="pickup" method="post" action="/pickup">
         <div class="data container">
@@ -30,8 +33,8 @@
             <div class="row" style="padding-top: 0.5cm;">
                 <div class="col-sm">
                     <label for="alamat_pickup">Alamat Pickup : </label><br>
-                    <textarea class="text" name="alamat_pengirim" type="text" value="<%= locals.user['alamat'] %>"
-                        rows="3" cols="30" required></textarea>
+                    <textarea class="text" name="alamat_pengirim" type="text"
+                        rows="3" cols="30" required><%= locals.user['alamat'] %></textarea>
                     <br>
                 </div>
                 <div class="col-sm">

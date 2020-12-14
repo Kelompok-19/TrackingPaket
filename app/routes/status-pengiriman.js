@@ -104,6 +104,7 @@ module.exports.getid = (req, res) => {
             }
 
             res.render('status-pengiriman/status-pengiriman-detail', { paket: paket, request: current_request, status: status.status_msg, logs: logs });
+            return;
         }
         res.redirect('/404');
     }
