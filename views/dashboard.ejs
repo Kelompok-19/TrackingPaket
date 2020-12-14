@@ -7,7 +7,7 @@
             </h2>
             <br>
             <% } %>
-                <% if (locals.requests && locals.requests.length> 0) { %>
+        <% if (locals.requests && locals.requests.length> 0) { %>
                     <br>
                     <div class="sending">
                         <h1>
@@ -81,14 +81,16 @@
                             </tbody>
                         </table>
                     </div>
-                    <% } else { %>
+                <% } else { %>
                         <br>
                         <br>
-                        <h2>Tidak ada baru pesanan saat ini...</h2>
+                        <h2>Tidak ada pesanan baru saat ini...</h2>
+                        <h2>Catatan: Sesuai peraturan perusahaan, anda tidak bisa melihat pesanan yang anda buat sendiri.</h2>
                         <br>
                         <br>
-                        <% } %>
-                            <% if (locals.paketlist && locals.paketlist.length> 0) { %>
+                    <% } %>
+                            
+        <% if (locals.paketlist && locals.paketlist.length> 0) { %>
                                 <div class="sending" style="margin-right: 1.5cm; margin-left: 1cm;">
                                     <h1>
                                         Request yang diambil
@@ -148,10 +150,11 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <% } else { %>
+                        <% } else { %>
                                     <br>
                                     <br>
                                     <h2>Tidak ada pesanan yang telah terambil untuk sekarang...</h2>
-                                    <% } %>
+                        <% } %>
+                        
     </div>
     <%- include('layout/footer') %>
